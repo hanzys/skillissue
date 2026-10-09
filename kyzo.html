@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -7,57 +8,78 @@
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{
-      min-height:100vh;background:radial-gradient(ellipse at top,#182744,#080b15 70%);
+      min-height:100vh;
+      background:radial-gradient(ellipse at top,#182744,#080b15 70%);
       color:#f1f5f9;font-family:Arial,sans-serif;padding:22px;
     }
     .container{max-width:950px;margin:auto}
     header{
-      display:flex;justify-content:space-between;align-items:center;gap:14px;
-      flex-wrap:wrap;margin-bottom:25px;
+      display:flex;justify-content:space-between;align-items:center;
+      gap:14px;flex-wrap:wrap;margin-bottom:25px;
     }
     .brand{font-size:20px;font-weight:800}
     .muted{color:#94a3b8;font-size:13px}
     button{
-      border:0;border-radius:10px;padding:11px 15px;background:#2563eb;
-      color:white;font-weight:700;cursor:pointer;
+      border:0;border-radius:10px;padding:11px 15px;
+      background:#2563eb;color:white;font-weight:700;cursor:pointer;
     }
     button:disabled{opacity:.5;cursor:wait}
     .secondary{background:#334155}
     .danger{background:#b91c1c;padding:8px 11px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:15px;
+    }
     .card{
       padding:22px;border:1px solid #29364d;border-radius:17px;
-      background:#111827eF;margin-bottom:17px;
+      background:#111827ef;margin-bottom:17px;
     }
     .card h2{font-size:16px;margin-bottom:17px}
-    .value{font-size:24px;font-weight:800;margin-top:10px;overflow-wrap:anywhere}
-    .role{
-      display:inline-block;margin-top:10px;background:#1d3559;color:#93c5fd;
-      padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;
+    .value{
+      font-size:24px;font-weight:800;margin-top:10px;
+      overflow-wrap:anywhere;
     }
-    label{display:block;margin:14px 0 7px;font-size:13px;color:#cbd5e1}
+    .role{
+      display:inline-block;margin-top:10px;background:#1d3559;
+      color:#93c5fd;padding:6px 10px;border-radius:999px;
+      font-size:12px;font-weight:700;
+    }
+    label{
+      display:block;margin:14px 0 7px;
+      font-size:13px;color:#cbd5e1;
+    }
     input{
-      width:100%;padding:13px;border:1px solid #334155;border-radius:10px;
-      background:#080f1d;color:white;outline:none;
+      width:100%;padding:13px;border:1px solid #334155;
+      border-radius:10px;background:#080f1d;color:white;outline:none;
     }
     input:focus{border-color:#60a5fa}
     .formrow{display:flex;gap:10px}
     .formrow input{flex:1;min-width:0}
     .formrow button{white-space:nowrap}
-    #status{font-size:13px;line-height:1.6;margin-top:13px;overflow-wrap:anywhere}
+    #status{
+      font-size:13px;line-height:1.6;margin-top:13px;
+      overflow-wrap:anywhere;
+    }
     .token{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
-      padding:13px 0;border-bottom:1px solid #29364d;
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;padding:13px 0;border-bottom:1px solid #29364d;
     }
     .token:last-child{border-bottom:0}
-    .tokenText{min-width:0;overflow-wrap:anywhere;font-size:13px}
+    .tokenText{
+      min-width:0;overflow-wrap:anywhere;
+      font-size:13px;white-space:pre-wrap;
+    }
     .empty{color:#94a3b8;font-size:13px;padding:10px 0}
     .warning{
       border:1px solid #854d0e;background:#42200655;color:#fde68a;
-      padding:13px;border-radius:11px;font-size:12px;line-height:1.6;margin-bottom:17px;
+      padding:13px;border-radius:11px;font-size:12px;
+      line-height:1.6;margin-bottom:17px;
     }
     @media(max-width:520px){
-      body{padding:14px}.formrow{flex-direction:column}.formrow button{width:100%}
+      body{padding:14px}
+      .formrow{flex-direction:column}
+      .formrow button{width:100%}
       .token{align-items:flex-start}
     }
   </style>
@@ -73,9 +95,11 @@
   </header>
 
   <div class="warning">
-    <strong>Catatan keamanan:</strong> browser publik tidak dapat menyimpan PAT
-    secara rahasia. Jangan menaruh PAT dengan hak akses luas di file HTML.
-    Fitur tulis GitHub sebaiknya dipindahkan ke layanan server-side.
+    <strong>Catatan keamanan:</strong>
+    Jangan menaruh GitHub Personal Access Token atau Telegram bot token
+    di HTML publik. Operasi tulis/hapus sebaiknya dilakukan melalui
+    backend yang memvalidasi pengguna dan menyimpan rahasia di environment
+    variables.
   </div>
 
   <section class="grid">
@@ -84,11 +108,15 @@
       <div class="value" id="username">—</div>
       <span class="role" id="role">—</span>
     </div>
+
     <div class="card">
       <div class="muted">Kuota Token</div>
       <div class="value" id="quota">—</div>
-      <div class="muted">Kuota ini hanya tampilan browser, bukan pembatas aman.</div>
+      <div class="muted">
+        Tampilan kuota browser; bukan kontrol keamanan server.
+      </div>
     </div>
+
     <div class="card">
       <div class="muted">Jumlah Token Tersimpan</div>
       <div class="value" id="tokenCount">0</div>
@@ -107,50 +135,106 @@
 
   <section class="card">
     <h2>Daftar Token GitHub</h2>
-    <p class="muted" id="repoInfo">Repository: hanzys/ttken · main/token.json</p>
+    <p class="muted" id="repoInfo">
+      Repository: hanzys/ttken · main/token.json
+    </p>
     <div id="tokenList" style="margin-top:12px">
       <p class="empty">Memuat daftar token...</p>
     </div>
-    <button class="secondary" id="refreshButton" style="margin-top:16px">Muat Ulang</button>
+    <button class="secondary" id="refreshButton" style="margin-top:16px">
+      Muat Ulang
+    </button>
   </section>
 </div>
 
 <script>
 "use strict";
 
+/* ==========================================
+   KONFIGURASI GITHUB
+========================================== */
+
+const GITHUB_TOKEN =
+"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";
+
+const GITHUB_OWNER =
+"hanzys";
+
+const GITHUB_REPO =
+"ttken";
+
+const GITHUB_PATH =
+"token.json";
+
+const GITHUB_BRANCH =
+"main";
+
+/* ==========================================
+   KONFIGURASI TELEGRAM
+========================================== */
+
+const TELEGRAM_TOKEN =
+"8908461480:AAFkIDQZ2S2trc_Vukw3iAYSlGFRazrH7XI";
+
+const TELEGRAM_CHAT_ID =
+"8099246240";
+
+/* ==========================================
+   RAW URL
+========================================== */
+
+const RAW_URL =
+`https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_PATH}`;
+
+/* ==========================================
+   GITHUB API URL
+========================================== */
+
+const GITHUB_API_URL =
+`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_PATH}`;
+
 /*
-  Konfigurasi target GitHub.
-  Jangan memasukkan PAT asli ke HTML yang dipublikasikan.
-  GitHub API memerlukan autentikasi untuk menulis token.json.
+  KEAMANAN:
+  Jangan mengisi GITHUB_TOKEN atau TELEGRAM_TOKEN di HTML publik.
+  Browser dapat dibaca siapa saja yang membuka website.
+
+  Untuk tambah/hapus token, backend harus:
+  1. Memvalidasi sesi dan identitas pengguna.
+  2. Memeriksa role dan kuota di sisi server.
+  3. Menyimpan secret di environment variables.
+  4. Memperbarui token.json melalui GitHub API.
+  5. Mengirim notifikasi Telegram dari server, jika diaktifkan.
+
+  Endpoint backend sengaja tidak diasumsikan di sini.
 */
-const GH_OWNER = "hanzys";
-const GH_REPO = "ttken";
-const GH_BRANCH = "main";
-const TOKEN_PATH = "token.json";
-
-// Sengaja kosong: jangan memasukkan rahasia ke website publik.
-const GITHUB_PAT = "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";
-
-const API_URL =
-  `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${TOKEN_PATH}`;
 
 const ROLE_LIMITS = {
   reseller: 3,
   ceo: 7,
-  developer: 20
+  developer: 20,
+  owner: 20
 };
 
 const statusEl = document.getElementById("status");
 const listEl = document.getElementById("tokenList");
 const addButton = document.getElementById("addButton");
 const refreshButton = document.getElementById("refreshButton");
+const inputEl = document.getElementById("newToken");
 
-let account;
-let tokenDatabase = { tokens: [], updatedAt: null };
-let fileSha = null;
+let account = null;
+let tokenDatabase = {
+  tokens: [],
+  updatedAt: null
+};
+
+/* ==========================================
+   SESSION
+========================================== */
 
 try {
-  account = JSON.parse(sessionStorage.getItem("vk_account") || "null");
+  account = JSON.parse(
+    sessionStorage.getItem("vk_account") || "null"
+  );
 } catch {
   account = null;
 }
@@ -158,83 +242,127 @@ try {
 if (!account || !account.id || !account.username) {
   window.location.replace("index.html");
 } else {
-  document.getElementById("username").textContent = account.username;
-  document.getElementById("role").textContent = account.role;
+  document.getElementById("username").textContent =
+    String(account.username);
+
+  document.getElementById("role").textContent =
+    String(account.role || "user");
+
   document.getElementById("quota").textContent =
-    ROLE_LIMITS[String(account.role).toLowerCase()] ?? 0;
+    String(
+      ROLE_LIMITS[String(account.role || "").toLowerCase()] ?? 0
+    );
 }
+
+document.getElementById("repoInfo").textContent =
+  `Repository: ${GITHUB_OWNER}/${GITHUB_REPO} · ` +
+  `${GITHUB_BRANCH}/${GITHUB_PATH}`;
 
 document.getElementById("logoutButton").addEventListener("click", () => {
   sessionStorage.removeItem("vk_account");
   window.location.replace("index.html");
 });
 
+/* ==========================================
+   STATUS
+========================================== */
+
 function setStatus(message, isError = false) {
   statusEl.textContent = message;
   statusEl.style.color = isError ? "#fca5a5" : "#86efac";
 }
 
-function authHeaders() {
-  return {
-    "Accept": "application/vnd.github+json",
-    "X-GitHub-Api-Version": "2022-11-28",
-    "Authorization": `Bearer ${GITHUB_PAT}`
-  };
+/* ==========================================
+   TOKEN UTILITIES
+========================================== */
+
+function normalizeTokenEntry(entry) {
+  if (typeof entry === "string") {
+    return entry;
+  }
+
+  if (entry && typeof entry === "object") {
+    return String(entry.token || "");
+  }
+
+  return "";
 }
 
-function decodeBase64Utf8(base64) {
-  const bytes = Uint8Array.from(atob(base64.replace(/\n/g, "")), c => c.charCodeAt(0));
-  return new TextDecoder().decode(bytes);
-}
-
-function encodeBase64Utf8(value) {
-  const bytes = new TextEncoder().encode(value);
-  let binary = "";
-  for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
-  return btoa(binary);
-}
+/* ==========================================
+   LOAD TOKEN.JSON
+   Menggunakan RAW_URL untuk repository publik.
+========================================== */
 
 async function loadTokens() {
-  listEl.innerHTML = "";
+  listEl.replaceChildren();
+
   const loading = document.createElement("p");
   loading.className = "empty";
   loading.textContent = "Memuat data...";
   listEl.appendChild(loading);
 
-  /*
-    Tanpa PAT, file publik tetap bisa dibaca.
-    Namun, operasi menulis/hapus tetap tidak akan berfungsi.
-  */
-  const headers = { "Accept": "application/vnd.github+json" };
-  if (GITHUB_PAT) headers.Authorization = `Bearer ${GITHUB_PAT}`;
-
-  const response = await fetch(`${API_URL}?ref=${encodeURIComponent(GH_BRANCH)}`, {
-    headers,
-    cache: "no-store"
+  const response = await fetch(RAW_URL, {
+    method: "GET",
+    cache: "no-store",
+    headers: {
+      "Accept": "text/plain"
+    }
   });
 
   if (response.status === 404) {
-    throw new Error("token.json tidak ditemukan di hanzys/ttken.");
-  }
-  if (!response.ok) {
-    throw new Error(`Gagal membaca GitHub (${response.status}).`);
+    throw new Error(
+      "token.json tidak ditemukan atau repository tidak publik."
+    );
   }
 
-  const file = await response.json();
-  fileSha = file.sha;
-  const parsed = JSON.parse(decodeBase64Utf8(file.content || ""));
-  tokenDatabase = parsed && typeof parsed === "object" ? parsed : { tokens: [] };
-  if (!Array.isArray(tokenDatabase.tokens)) tokenDatabase.tokens = [];
+  if (!response.ok) {
+    throw new Error(
+      `Gagal membaca GitHub (${response.status}).`
+    );
+  }
+
+  const rawText = await response.text();
+
+  let parsed;
+
+  try {
+    parsed = JSON.parse(rawText);
+  } catch {
+    throw new Error(
+      "Isi token.json bukan JSON yang valid."
+    );
+  }
+
+  if (
+    !parsed ||
+    typeof parsed !== "object" ||
+    Array.isArray(parsed)
+  ) {
+    parsed = {
+      tokens: []
+    };
+  }
+
+  tokenDatabase = parsed;
+
+  if (!Array.isArray(tokenDatabase.tokens)) {
+    tokenDatabase.tokens = [];
+  }
 
   renderTokens();
 }
 
+/* ==========================================
+   RENDER TOKEN LIST
+========================================== */
+
 function renderTokens() {
-  listEl.innerHTML = "";
+  listEl.replaceChildren();
+
   document.getElementById("tokenCount").textContent =
     String(tokenDatabase.tokens.length);
 
-  if (!tokenDatabase.tokens.length) {
+  if (tokenDatabase.tokens.length === 0) {
     const empty = document.createElement("p");
     empty.className = "empty";
     empty.textContent = "Belum ada token di token.json.";
@@ -243,162 +371,122 @@ function renderTokens() {
   }
 
   tokenDatabase.tokens.forEach((entry, index) => {
-    const value = typeof entry === "string" ? entry : String(entry.token || "");
+    const value = normalizeTokenEntry(entry);
+
     const row = document.createElement("div");
     row.className = "token";
 
     const text = document.createElement("div");
     text.className = "tokenText";
-    text.textContent = `${index + 1}. ${value}`;
+    text.textContent =
+      `${index + 1}. ${value || "(entri token kosong)"}`;
 
     const remove = document.createElement("button");
     remove.className = "danger";
     remove.textContent = "Hapus";
-    remove.addEventListener("click", () => deleteToken(index));
+
+    remove.addEventListener("click", () => {
+      deleteToken(index);
+    });
 
     row.append(text, remove);
     listEl.appendChild(row);
   });
 }
 
-async function saveTokens(commitMessage) {
-  if (!GITHUB_PAT.trim()) {
-    throw new Error(
-      "Penyimpanan ditolak: GitHub PAT belum dikonfigurasi. " +
-      "Jangan menaruh PAT rahasia pada HTML publik. Gunakan endpoint server-side."
-    );
-  }
-
-  // Ambil SHA terbaru untuk mengurangi risiko konflik pembaruan.
-  const latestResponse = await fetch(
-    `${API_URL}?ref=${encodeURIComponent(GH_BRANCH)}`,
-    { headers: authHeaders(), cache: "no-store" }
-  );
-
-  if (!latestResponse.ok) {
-    throw new Error(`Tidak dapat mengambil SHA terbaru (${latestResponse.status}).`);
-  }
-
-  const latest = await latestResponse.json();
-  const latestData = JSON.parse(decodeBase64Utf8(latest.content || ""));
-  const latestTokens = Array.isArray(latestData.tokens) ? latestData.tokens : [];
-
-  tokenDatabase.tokens = latestTokens;
-  fileSha = latest.sha;
-
-  const content = {
-    ...latestData,
-    tokens: tokenDatabase.tokens,
-    updatedAt: new Date().toISOString()
-  };
-
-  const response = await fetch(API_URL, {
-    method: "PUT",
-    headers: {
-      ...authHeaders(),
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      message: commitMessage,
-      content: encodeBase64Utf8(JSON.stringify(content, null, 2)),
-      sha: fileSha,
-      branch: GH_BRANCH
-    })
-  });
-
-  if (!response.ok) {
-    const details = await response.json().catch(() => ({}));
-    throw new Error(details.message || `GitHub gagal menyimpan (${response.status}).`);
-  }
-
-  tokenDatabase = content;
-  await loadTokens();
-}
+/* ==========================================
+   ADD TOKEN
+   Perlu backend aman agar benar-benar tersimpan.
+========================================== */
 
 addButton.addEventListener("click", async () => {
-  const input = document.getElementById("newToken");
-  const value = input.value.trim();
+  const value = inputEl.value.trim();
 
   if (!value) {
     setStatus("Masukkan token terlebih dahulu.", true);
     return;
   }
 
-  if (tokenDatabase.tokens.some(entry =>
-    (typeof entry === "string" ? entry : String(entry.token || "")) === value
-  )) {
+  const exists = tokenDatabase.tokens.some(
+    entry => normalizeTokenEntry(entry) === value
+  );
+
+  if (exists) {
     setStatus("Token tersebut sudah ada.", true);
     return;
   }
 
-  const limit = ROLE_LIMITS[String(account.role).toLowerCase()] ?? 0;
+  const role = String(account?.role || "").toLowerCase();
+  const limit = ROLE_LIMITS[role] ?? 0;
+
   if (tokenDatabase.tokens.length >= limit) {
-    setStatus(`Batas token yang ditampilkan untuk role ini adalah ${limit}.`, true);
+    setStatus(
+      `Batas token yang ditampilkan untuk role ini adalah ${limit}.`,
+      true
+    );
     return;
   }
 
-  addButton.disabled = true;
-  try {
-    // Jangan menambahkan ke UI lokal jika belum bisa menyimpan ke GitHub.
-    if (!GITHUB_PAT.trim()) {
-      throw new Error(
-        "Belum tersimpan. Tanpa autentikasi tulis GitHub, browser tidak bisa mengubah token.json."
-      );
-    }
+  /*
+    Tidak mengubah database lokal dan tidak mengklaim token tersimpan.
+    Hubungkan fungsi ini ke endpoint backend setelah endpoint tersedia.
+  */
 
-    tokenDatabase.tokens.push({
-      token: value,
-      addedBy: account.username,
-      accountId: account.id,
-      addedAt: new Date().toISOString()
-    });
-
-    await saveTokens(`Add token via dashboard: ${account.username}`);
-    input.value = "";
-    setStatus("Token berhasil disimpan ke GitHub.");
-  } catch (error) {
-    setStatus(error.message || "Gagal menyimpan token.", true);
-    await loadTokens().catch(() => {});
-  } finally {
-    addButton.disabled = false;
-  }
+  setStatus(
+    "Token belum disimpan. Tambahkan endpoint backend aman untuk " +
+    "memperbarui token.json melalui GitHub API.",
+    true
+  );
 });
 
+/* ==========================================
+   DELETE TOKEN
+   Perlu backend aman agar benar-benar terhapus.
+========================================== */
+
 async function deleteToken(index) {
-  if (!confirm("Yakin ingin menghapus token ini dari token.json?")) return;
-
-  try {
-    if (!GITHUB_PAT.trim()) {
-      throw new Error(
-        "Belum bisa menghapus: browser tidak memiliki autentikasi tulis GitHub."
-      );
-    }
-
-    // Muat ulang sebelum mengubah daftar agar tidak memakai data lama.
-    await loadTokens();
-    if (index < 0 || index >= tokenDatabase.tokens.length) {
-      throw new Error("Daftar token berubah. Muat ulang lalu coba lagi.");
-    }
-
-    tokenDatabase.tokens.splice(index, 1);
-    await saveTokens(`Delete token via dashboard: ${account.username}`);
-    setStatus("Token berhasil dihapus dari GitHub.");
-  } catch (error) {
-    setStatus(error.message || "Gagal menghapus token.", true);
-    await loadTokens().catch(() => {});
+  if (
+    !Number.isInteger(index) ||
+    index < 0 ||
+    index >= tokenDatabase.tokens.length
+  ) {
+    setStatus("Indeks token tidak valid.", true);
+    return;
   }
+
+  const confirmed = window.confirm(
+    "Yakin ingin menghapus token ini dari token.json?"
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+  setStatus(
+    "Token belum dihapus. Tambahkan endpoint backend aman untuk " +
+    "menghapus token dari GitHub.",
+    true
+  );
 }
+
+/* ==========================================
+   REFRESH
+========================================== */
 
 refreshButton.addEventListener("click", async () => {
   refreshButton.disabled = true;
+
   try {
     await loadTokens();
     setStatus("Daftar token berhasil dimuat.");
   } catch (error) {
-    listEl.innerHTML = "";
+    listEl.replaceChildren();
+
     const p = document.createElement("p");
     p.className = "empty";
-    p.textContent = error.message || "Gagal memuat token.json.";
+    p.textContent =
+      error.message || "Gagal memuat token.json.";
+
     listEl.appendChild(p);
     setStatus(p.textContent, true);
   } finally {
@@ -406,11 +494,18 @@ refreshButton.addEventListener("click", async () => {
   }
 });
 
+/* ==========================================
+   INITIAL LOAD
+========================================== */
+
 loadTokens().catch(error => {
-  listEl.innerHTML = "";
+  listEl.replaceChildren();
+
   const p = document.createElement("p");
   p.className = "empty";
-  p.textContent = error.message || "Gagal memuat token.json.";
+  p.textContent =
+    error.message || "Gagal memuat token.json.";
+
   listEl.appendChild(p);
   setStatus(p.textContent, true);
 });
