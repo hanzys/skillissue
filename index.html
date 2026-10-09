@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b15">
   <title>VeronixKyzooxd — Login</title>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
@@ -13,8 +14,7 @@
     }
     .card{
       width:100%;max-width:420px;padding:30px;border:1px solid #28344c;
-      border-radius:22px;background:#101727eF;
-      box-shadow:0 25px 80px #0008;
+      border-radius:22px;background:#101727ef;box-shadow:0 25px 80px #0008;
     }
     .logo{
       width:62px;height:62px;display:grid;place-items:center;margin:0 auto 18px;
@@ -47,90 +47,64 @@
 
     <form id="loginForm">
       <label for="username">Username</label>
-      <input id="username" autocomplete="username" placeholder="Masukkan username" required>
+      <input id="username" autocomplete="username"
+        placeholder="Masukkan username" required maxlength="100">
 
       <label for="accountKey">Account Key</label>
-      <input id="accountKey" type="password" autocomplete="current-password"
-             placeholder="Masukkan account key" required>
+      <input id="accountKey" type="password"
+        autocomplete="current-password"
+        placeholder="Masukkan account key" required maxlength="500">
 
       <button id="loginButton" type="submit">Masuk Dashboard</button>
     </form>
 
-    <p id="status" role="status"></p>
-    <p class="hint">Verifikasi akun menggunakan database GitHub.</p>
+    <p id="status" role="status" aria-live="polite"></p>
+    <p class="hint">Verifikasi akun melalui backend yang terhubung ke GitHub.</p>
   </main>
 
 <script>
 "use strict";
 
-const GH_OWNER = "hanzys";
-const GH_REPO = "databaseaccount";
-const GH_BRANCH = "main";
-const ACCOUNT_PATH = "account.json";
-
-const RAW_URL =
-  `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_BRANCH}/${ACCOUNT_PATH}`;
-
 const form = document.getElementById("loginForm");
 const button = document.getElementById("loginButton");
 const statusEl = document.getElementById("status");
 
-form.addEventListener("submit", async (event) => {
+form.addEventListener("submit", async event => {
   event.preventDefault();
 
   const username = document.getElementById("username").value.trim();
-  const accountKey = document.getElementById("accountKey").value.trim();
+  const accountKey = document.getElementById("accountKey").value;
 
   if (!username || !accountKey) {
     statusEl.textContent = "Username dan Account Key wajib diisi.";
+    statusEl.style.color = "#fca5a5";
     return;
   }
 
   button.disabled = true;
   statusEl.textContent = "Memeriksa akun...";
+  statusEl.style.color = "#cbd5e1";
 
   try {
-    const response = await fetch(`${RAW_URL}?t=${Date.now()}`, {
-      cache: "no-store"
+    const response = await fetch("/api/login", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, accountKey })
     });
 
-    if (!response.ok) {
-      throw new Error("Database akun tidak dapat diakses.");
+    const result = await response.json();
+
+    if (!response.ok || !result.ok) {
+      throw new Error(result.error || "Login gagal.");
     }
 
-    const database = await response.json();
-    const accounts = Array.isArray(database.accounts)
-      ? database.accounts
-      : [];
-
-    const account = accounts.find(item =>
-      String(item.username || "").toLowerCase() === username.toLowerCase() &&
-      String(item.accountKey || "") === accountKey
-    );
-
-    if (!account) {
-      statusEl.textContent = "Username atau Account Key salah.";
-      return;
-    }
-
-    if (database.bannedUsers &&
-        database.bannedUsers[String(account.id)]) {
-      statusEl.textContent = "Akun ini sedang dinonaktifkan.";
-      return;
-    }
-
-    const safeAccount = {
-      id: String(account.id || ""),
-      username: String(account.username || ""),
-      role: String(account.role || "reseller"),
-      createdAt: String(account.createdAt || ""),
-      createdBy: String(account.createdByUsername || account.createdBy || "")
-    };
-
-    sessionStorage.setItem("vk_account", JSON.stringify(safeAccount));
-    window.location.href = "kyzo.html";
+    // Backend menyetel cookie HttpOnly.
+    // Jangan menyimpan role atau sesi tepercaya di sessionStorage.
+    window.location.replace("kyzo.html");
   } catch (error) {
     statusEl.textContent = error.message || "Terjadi kesalahan saat login.";
+    statusEl.style.color = "#fca5a5";
   } finally {
     button.disabled = false;
   }
