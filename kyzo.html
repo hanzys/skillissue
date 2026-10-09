@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VeronixKyzooxd — Dashboard</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      min-height:100vh;background:radial-gradient(ellipse at top,#182744,#080b15 70%);
+      color:#f1f5f9;font-family:Arial,sans-serif;padding:22px;
+    }
+    .container{max-width:950px;margin:auto}
+    header{
+      display:flex;justify-content:space-between;align-items:center;gap:14px;
+      flex-wrap:wrap;margin-bottom:25px;
+    }
+    .brand{font-size:20px;font-weight:800}
+    .muted{color:#94a3b8;font-size:13px}
+    button{
+      border:0;border-radius:10px;padding:11px 15px;background:#2563eb;
+      color:white;font-weight:700;cursor:pointer;
+    }
+    button:disabled{opacity:.5;cursor:wait}
+    .secondary{background:#334155}
+    .danger{background:#b91c1c;padding:8px 11px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+    .card{
+      padding:22px;border:1px solid #29364d;border-radius:17px;
+      background:#111827eF;margin-bottom:17px;
+    }
+    .card h2{font-size:16px;margin-bottom:17px}
+    .value{font-size:24px;font-weight:800;margin-top:10px;overflow-wrap:anywhere}
+    .role{
+      display:inline-block;margin-top:10px;background:#1d3559;color:#93c5fd;
+      padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;
+    }
+    label{display:block;margin:14px 0 7px;font-size:13px;color:#cbd5e1}
+    input{
+      width:100%;padding:13px;border:1px solid #334155;border-radius:10px;
+      background:#080f1d;color:white;outline:none;
+    }
+    input:focus{border-color:#60a5fa}
+    .formrow{display:flex;gap:10px}
+    .formrow input{flex:1;min-width:0}
+    .formrow button{white-space:nowrap}
+    #status{font-size:13px;line-height:1.6;margin-top:13px;overflow-wrap:anywhere}
+    .token{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:13px 0;border-bottom:1px solid #29364d;
+    }
+    .token:last-child{border-bottom:0}
+    .tokenText{min-width:0;overflow-wrap:anywhere;font-size:13px}
+    .empty{color:#94a3b8;font-size:13px;padding:10px 0}
+    .warning{
+      border:1px solid #854d0e;background:#42200655;color:#fde68a;
+      padding:13px;border-radius:11px;font-size:12px;line-height:1.6;margin-bottom:17px;
+    }
+    @media(max-width:520px){
+      body{padding:14px}.formrow{flex-direction:column}.formrow button{width:100%}
+      .token{align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div>
+      <div class="brand">VK / Dashboard</div>
+      <div class="muted">VeronixKyzooxd Account Manager</div>
+    </div>
+    <button class="secondary" id="logoutButton">Keluar</button>
+  </header>
+
+  <div class="warning">
+    <strong>Catatan keamanan:</strong> browser publik tidak dapat menyimpan PAT
+    secara rahasia. Jangan menaruh PAT dengan hak akses luas di file HTML.
+    Fitur tulis GitHub sebaiknya dipindahkan ke layanan server-side.
+  </div>
+
+  <section class="grid">
+    <div class="card">
+      <div class="muted">Username</div>
+      <div class="value" id="username">—</div>
+      <span class="role" id="role">—</span>
+    </div>
+    <div class="card">
+      <div class="muted">Kuota Token</div>
+      <div class="value" id="quota">—</div>
+      <div class="muted">Kuota ini hanya tampilan browser, bukan pembatas aman.</div>
+    </div>
+    <div class="card">
+      <div class="muted">Jumlah Token Tersimpan</div>
+      <div class="value" id="tokenCount">0</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Tambah Token</h2>
+    <label for="newToken">Token yang ingin disimpan</label>
+    <div class="formrow">
+      <input id="newToken" placeholder="Masukkan token" autocomplete="off">
+      <button id="addButton">Tambah Token</button>
+    </div>
+    <p id="status" role="status"></p>
+  </section>
+
+  <section class="card">
+    <h2>Daftar Token GitHub</h2>
+    <p class="muted" id="repoInfo">Repository: hanzys/ttken · main/token.json</p>
+    <div id="tokenList" style="margin-top:12px">
+      <p class="empty">Memuat daftar token...</p>
+    </div>
+    <button class="secondary" id="refreshButton" style="margin-top:16px">Muat Ulang</button>
+  </section>
+</div>
+
+<script>
+"use strict";
+
+/*
+  Konfigurasi target GitHub.
+  Jangan memasukkan PAT asli ke HTML yang dipublikasikan.
+  GitHub API memerlukan autentikasi untuk menulis token.json.
+*/
+const GH_OWNER = "hanzys";
+const GH_REPO = "ttken";
+const GH_BRANCH = "main";
+const TOKEN_PATH = "token.json";
+
+// Sengaja kosong: jangan memasukkan rahasia ke website publik.
+const GITHUB_PAT = "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";
+
+const API_URL =
+  `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${TOKEN_PATH}`;
+
+const ROLE_LIMITS = {
+  reseller: 3,
+  ceo: 7,
+  developer: 20
+};
+
+const statusEl = document.getElementById("status");
+const listEl = document.getElementById("tokenList");
+const addButton = document.getElementById("addButton");
+const refreshButton = document.getElementById("refreshButton");
+
+let account;
+let tokenDatabase = { tokens: [], updatedAt: null };
+let fileSha = null;
+
+try {
+  account = JSON.parse(sessionStorage.getItem("vk_account") || "null");
+} catch {
+  account = null;
+}
+
+if (!account || !account.id || !account.username) {
+  window.location.replace("index.html");
+} else {
+  document.getElementById("username").textContent = account.username;
+  document.getElementById("role").textContent = account.role;
+  document.getElementById("quota").textContent =
+    ROLE_LIMITS[String(account.role).toLowerCase()] ?? 0;
+}
+
+document.getElementById("logoutButton").addEventListener("click", () => {
+  sessionStorage.removeItem("vk_account");
+  window.location.replace("index.html");
+});
+
+function setStatus(message, isError = false) {
+  statusEl.textContent = message;
+  statusEl.style.color = isError ? "#fca5a5" : "#86efac";
+}
+
+function authHeaders() {
+  return {
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+    "Authorization": `Bearer ${GITHUB_PAT}`
+  };
+}
+
+function decodeBase64Utf8(base64) {
+  const bytes = Uint8Array.from(atob(base64.replace(/\n/g, "")), c => c.charCodeAt(0));
+  return new TextDecoder().decode(bytes);
+}
+
+function encodeBase64Utf8(value) {
+  const bytes = new TextEncoder().encode(value);
+  let binary = "";
+  for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+  return btoa(binary);
+}
+
+async function loadTokens() {
+  listEl.innerHTML = "";
+  const loading = document.createElement("p");
+  loading.className = "empty";
+  loading.textContent = "Memuat data...";
+  listEl.appendChild(loading);
+
+  /*
+    Tanpa PAT, file publik tetap bisa dibaca.
+    Namun, operasi menulis/hapus tetap tidak akan berfungsi.
+  */
+  const headers = { "Accept": "application/vnd.github+json" };
+  if (GITHUB_PAT) headers.Authorization = `Bearer ${GITHUB_PAT}`;
+
+  const response = await fetch(`${API_URL}?ref=${encodeURIComponent(GH_BRANCH)}`, {
+    headers,
+    cache: "no-store"
+  });
+
+  if (response.status === 404) {
+    throw new Error("token.json tidak ditemukan di hanzys/ttken.");
+  }
+  if (!response.ok) {
+    throw new Error(`Gagal membaca GitHub (${response.status}).`);
+  }
+
+  const file = await response.json();
+  fileSha = file.sha;
+  const parsed = JSON.parse(decodeBase64Utf8(file.content || ""));
+  tokenDatabase = parsed && typeof parsed === "object" ? parsed : { tokens: [] };
+  if (!Array.isArray(tokenDatabase.tokens)) tokenDatabase.tokens = [];
+
+  renderTokens();
+}
+
+function renderTokens() {
+  listEl.innerHTML = "";
+  document.getElementById("tokenCount").textContent =
+    String(tokenDatabase.tokens.length);
+
+  if (!tokenDatabase.tokens.length) {
+    const empty = document.createElement("p");
+    empty.className = "empty";
+    empty.textContent = "Belum ada token di token.json.";
+    listEl.appendChild(empty);
+    return;
+  }
+
+  tokenDatabase.tokens.forEach((entry, index) => {
+    const value = typeof entry === "string" ? entry : String(entry.token || "");
+    const row = document.createElement("div");
+    row.className = "token";
+
+    const text = document.createElement("div");
+    text.className = "tokenText";
+    text.textContent = `${index + 1}. ${value}`;
+
+    const remove = document.createElement("button");
+    remove.className = "danger";
+    remove.textContent = "Hapus";
+    remove.addEventListener("click", () => deleteToken(index));
+
+    row.append(text, remove);
+    listEl.appendChild(row);
+  });
+}
+
+async function saveTokens(commitMessage) {
+  if (!GITHUB_PAT.trim()) {
+    throw new Error(
+      "Penyimpanan ditolak: GitHub PAT belum dikonfigurasi. " +
+      "Jangan menaruh PAT rahasia pada HTML publik. Gunakan endpoint server-side."
+    );
+  }
+
+  // Ambil SHA terbaru untuk mengurangi risiko konflik pembaruan.
+  const latestResponse = await fetch(
+    `${API_URL}?ref=${encodeURIComponent(GH_BRANCH)}`,
+    { headers: authHeaders(), cache: "no-store" }
+  );
+
+  if (!latestResponse.ok) {
+    throw new Error(`Tidak dapat mengambil SHA terbaru (${latestResponse.status}).`);
+  }
+
+  const latest = await latestResponse.json();
+  const latestData = JSON.parse(decodeBase64Utf8(latest.content || ""));
+  const latestTokens = Array.isArray(latestData.tokens) ? latestData.tokens : [];
+
+  tokenDatabase.tokens = latestTokens;
+  fileSha = latest.sha;
+
+  const content = {
+    ...latestData,
+    tokens: tokenDatabase.tokens,
+    updatedAt: new Date().toISOString()
+  };
+
+  const response = await fetch(API_URL, {
+    method: "PUT",
+    headers: {
+      ...authHeaders(),
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: commitMessage,
+      content: encodeBase64Utf8(JSON.stringify(content, null, 2)),
+      sha: fileSha,
+      branch: GH_BRANCH
+    })
+  });
+
+  if (!response.ok) {
+    const details = await response.json().catch(() => ({}));
+    throw new Error(details.message || `GitHub gagal menyimpan (${response.status}).`);
+  }
+
+  tokenDatabase = content;
+  await loadTokens();
+}
+
+addButton.addEventListener("click", async () => {
+  const input = document.getElementById("newToken");
+  const value = input.value.trim();
+
+  if (!value) {
+    setStatus("Masukkan token terlebih dahulu.", true);
+    return;
+  }
+
+  if (tokenDatabase.tokens.some(entry =>
+    (typeof entry === "string" ? entry : String(entry.token || "")) === value
+  )) {
+    setStatus("Token tersebut sudah ada.", true);
+    return;
+  }
+
+  const limit = ROLE_LIMITS[String(account.role).toLowerCase()] ?? 0;
+  if (tokenDatabase.tokens.length >= limit) {
+    setStatus(`Batas token yang ditampilkan untuk role ini adalah ${limit}.`, true);
+    return;
+  }
+
+  addButton.disabled = true;
+  try {
+    // Jangan menambahkan ke UI lokal jika belum bisa menyimpan ke GitHub.
+    if (!GITHUB_PAT.trim()) {
+      throw new Error(
+        "Belum tersimpan. Tanpa autentikasi tulis GitHub, browser tidak bisa mengubah token.json."
+      );
+    }
+
+    tokenDatabase.tokens.push({
+      token: value,
+      addedBy: account.username,
+      accountId: account.id,
+      addedAt: new Date().toISOString()
+    });
+
+    await saveTokens(`Add token via dashboard: ${account.username}`);
+    input.value = "";
+    setStatus("Token berhasil disimpan ke GitHub.");
+  } catch (error) {
+    setStatus(error.message || "Gagal menyimpan token.", true);
+    await loadTokens().catch(() => {});
+  } finally {
+    addButton.disabled = false;
+  }
+});
+
+async function deleteToken(index) {
+  if (!confirm("Yakin ingin menghapus token ini dari token.json?")) return;
+
+  try {
+    if (!GITHUB_PAT.trim()) {
+      throw new Error(
+        "Belum bisa menghapus: browser tidak memiliki autentikasi tulis GitHub."
+      );
+    }
+
+    // Muat ulang sebelum mengubah daftar agar tidak memakai data lama.
+    await loadTokens();
+    if (index < 0 || index >= tokenDatabase.tokens.length) {
+      throw new Error("Daftar token berubah. Muat ulang lalu coba lagi.");
+    }
+
+    tokenDatabase.tokens.splice(index, 1);
+    await saveTokens(`Delete token via dashboard: ${account.username}`);
+    setStatus("Token berhasil dihapus dari GitHub.");
+  } catch (error) {
+    setStatus(error.message || "Gagal menghapus token.", true);
+    await loadTokens().catch(() => {});
+  }
+}
+
+refreshButton.addEventListener("click", async () => {
+  refreshButton.disabled = true;
+  try {
+    await loadTokens();
+    setStatus("Daftar token berhasil dimuat.");
+  } catch (error) {
+    listEl.innerHTML = "";
+    const p = document.createElement("p");
+    p.className = "empty";
+    p.textContent = error.message || "Gagal memuat token.json.";
+    listEl.appendChild(p);
+    setStatus(p.textContent, true);
+  } finally {
+    refreshButton.disabled = false;
+  }
+});
+
+loadTokens().catch(error => {
+  listEl.innerHTML = "";
+  const p = document.createElement("p");
+  p.className = "empty";
+  p.textContent = error.message || "Gagal memuat token.json.";
+  listEl.appendChild(p);
+  setStatus(p.textContent, true);
+});
+</script>
+</body>
+</html>
