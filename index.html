@@ -1,24 +1,6298 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#020711"><title>VeronixKyzooxd — Login</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>VeronixKyzooxd</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;font-family:Inter,sans-serif;color:#fff;background:radial-gradient(circle at 50% -10%,rgba(0,132,255,.24),transparent 32%),radial-gradient(circle at 100% 40%,rgba(0,105,255,.14),transparent 30%),linear-gradient(180deg,#020711,#030b16 50%,#020812);overflow-x:hidden;position:relative}body:before,body:after{content:"";position:fixed;border-radius:50%;pointer-events:none}body:before{width:760px;height:760px;right:-310px;top:-410px;border:1px solid rgba(18,145,255,.3);background:radial-gradient(circle at 35% 65%,rgba(0,133,255,.15),transparent 68%)}body:after{width:620px;height:620px;left:-400px;bottom:-380px;border:1px solid rgba(14,131,255,.22);background:radial-gradient(circle at 65% 45%,rgba(0,117,255,.1),transparent 68%)}.login-wrap{width:100%;max-width:470px;position:relative;z-index:2}.brand{text-align:center;margin-bottom:24px}.title{font-size:34px;font-weight:700;letter-spacing:-1.5px}.title span{color:#159fff}.subtitle{margin-top:8px;color:#7690b1;font-size:13px}.card{padding:32px;border:1px solid rgba(0,142,255,.42);border-radius:24px;background:linear-gradient(145deg,rgba(3,13,25,.88),rgba(2,9,18,.95));box-shadow:0 30px 90px rgba(0,0,0,.55),0 0 60px rgba(0,104,255,.08),inset 0 1px 0 rgba(255,255,255,.04);backdrop-filter:blur(24px)}.icon{width:58px;height:58px;margin:0 auto 18px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:rgba(0,153,255,.12);border:1px solid rgba(21,159,255,.3);box-shadow:0 0 28px rgba(0,144,255,.12);font-size:27px}.heading{text-align:center;font-size:21px;font-weight:600}.desc{text-align:center;margin:8px auto 25px;max-width:350px;color:#7892b0;font-size:12px;line-height:1.6}.field{margin-top:15px}.label{display:block;margin-bottom:9px;font-size:13px;color:#dce8f7}.input-wrap{position:relative}.input-icon{position:absolute;left:17px;top:50%;transform:translateY(-50%);font-size:18px;color:#7da1cb;z-index:2}.input{width:100%;height:52px;padding:0 48px 0 50px;border:1px solid #294d72;border-radius:12px;outline:0;background:linear-gradient(145deg,rgba(14,34,57,.86),rgba(7,21,37,.9));color:#fff;font:inherit;font-size:13px}.input::placeholder{color:#7188a5}.input:focus{border-color:#148eff;box-shadow:0 0 0 2px rgba(0,134,255,.08),0 0 25px rgba(0,119,255,.08)}.eye{position:absolute;right:13px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:#7892b0;cursor:pointer;font-size:16px}.button{width:100%;height:52px;margin-top:20px;border:0;border-radius:12px;color:#fff;font:600 14px Inter,sans-serif;cursor:pointer;background:linear-gradient(100deg,#22c4ed,#159cf7 46%,#235eff);box-shadow:0 8px 25px rgba(0,128,255,.24),inset 0 1px 0 rgba(255,255,255,.28);transition:.2s}.button:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(0,128,255,.31)}.button:disabled{opacity:.55;cursor:not-allowed;transform:none}.status{min-height:38px;margin-top:14px;padding:10px 12px;border-radius:10px;border:1px solid rgba(43,101,159,.3);background:rgba(4,16,30,.58);font-size:11px;color:#159fff;line-height:1.6;overflow-wrap:anywhere}.status.error{color:#ff6375;border-color:rgba(255,99,117,.3)}.status.success{color:#2ee9a4;border-color:rgba(46,233,164,.3)}.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}.role{padding:10px 5px;text-align:center;border:1px solid rgba(43,86,127,.2);border-radius:10px;background:rgba(4,15,28,.5);font-size:9px;color:#7892b0}.role strong{display:block;margin-bottom:4px;font-size:10px;color:#dcecff}.footer{text-align:center;margin-top:18px;color:#526c8b;font-size:9px;letter-spacing:2px}@media(max-width:480px){.card{padding:24px 18px}.title{font-size:28px}.roles{grid-template-columns:1fr}.role{padding:8px}}
-</style></head><body><div class="login-wrap"><div class="brand"><div class="title">Veronix<span>Kyzooxd</span></div><div class="subtitle">Secure Token Manager</div></div><div class="card"><div class="icon">♛</div><div class="heading">Masuk ke Dashboard</div><div class="desc">Masukkan nama akun dan password yang terdaftar pada database role GitHub.</div><form id="loginForm"><div class="field"><label class="label" for="username">Nama Akun</label><div class="input-wrap"><div class="input-icon">♙</div><input id="username" class="input" type="text" placeholder="Masukkan nama akun..." autocomplete="username" required></div></div><div class="field"><label class="label" for="password">Password</label><div class="input-wrap"><div class="input-icon">🔒</div><input id="password" class="input" type="password" placeholder="Masukkan password..." autocomplete="current-password" required><button id="eye" class="eye" type="button" aria-label="Tampilkan password">◉</button></div></div><button id="loginButton" class="button" type="submit">Masuk Dashboard</button></form><div id="status" class="status" role="status" aria-live="polite">Menunggu nama akun dan password.</div><div class="roles"><div class="role"><strong>RESELLER</strong>Limit 7 token</div><div class="role"><strong>CEO</strong>Limit 13 token</div><div class="role"><strong>DEVELOPER</strong>Akses penuh</div></div></div><div class="footer">VERONIXKYZOOXD © 2026</div></div>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script><script>
-"use strict";
-/* Gunakan repo dan path yang sama dengan dashboard.html. */
-const GITHUB_OWNER="hanzys";
-const GITHUB_REPO="database";
-const GITHUB_BRANCH="main";
-const ROLE_PATH="databasekode/role.json";
-const ROLE_RAW_URL=`https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${ROLE_PATH}`;
-const username=document.getElementById("username"),password=document.getElementById("password"),form=document.getElementById("loginForm"),button=document.getElementById("loginButton"),statusBox=document.getElementById("status"),eye=document.getElementById("eye");
-try{const saved=JSON.parse(localStorage.getItem("veronix_current_account")||"null");if(saved&&saved.username&&saved.role)window.location.replace("dashboard.html");}catch(e){localStorage.removeItem("veronix_current_account");}
-function setStatus(message,type=""){statusBox.textContent=message;statusBox.className="status "+type;}
-async function getRoleDatabase(){const response=await axios.get(ROLE_RAW_URL+"?t="+Date.now(),{timeout:15000,headers:{Accept:"application/json"}});const data=response.data;if(!data||typeof data!=="object")throw new Error("Isi role.json tidak valid.");for(const role of ["developer","ceo","reseller"]){if(!Array.isArray(data[role]))data[role]=[];}return data;}
-async function login(){const user=username.value.trim(),pass=password.value;if(!user||!pass){setStatus("Nama akun dan password wajib diisi.","error");return;}button.disabled=true;button.textContent="Memeriksa...";setStatus("Memeriksa akun di GitHub...");try{const db=await getRoleDatabase();let account=null,roleFound="";for(const role of ["developer","ceo","reseller"]){const found=db[role].find(item=>String(item.username||"").trim().toLowerCase()===user.toLowerCase()&&String(item.password||"")===pass);if(found){account=found;roleFound=role;break;}}if(!account){setStatus("Nama akun atau password salah, atau akun belum terdaftar.","error");return;}const role=String(account.role||roleFound).trim().toLowerCase();if(!["developer","ceo","reseller"].includes(role)){setStatus("Role akun tidak valid.","error");return;}const tokenLimit=role==="developer"?999999:Number(account.tokenLimit||(role==="ceo"?(db.settings?.ceoTokenLimit||13):(db.settings?.resellerTokenLimit||7)));const resellerLimit=role==="developer"?999999:role==="ceo"?Number(account.resellerLimit||(db.settings?.maxResellerPerCeo||3)):0;const session={username:account.username,role,password:pass,tokenLimit,resellerLimit,createdBy:account.createdBy||null,createdAt:account.createdAt||null,loginAt:new Date().toISOString()};localStorage.setItem("veronix_current_account",JSON.stringify(session));setStatus(`Login berhasil. Role: ${role.toUpperCase()}. Mengalihkan...`,"success");window.setTimeout(()=>window.location.replace("dashboard.html"),500);}catch(error){console.error(error);if(error.response?.status===404)setStatus("role.json tidak ditemukan. Periksa repository, branch, dan path.","error");else if(error.response)setStatus("GitHub mengembalikan error HTTP "+error.response.status+".","error");else setStatus("Gagal membaca role.json. Periksa koneksi internet dan format file.","error");}finally{button.disabled=false;button.textContent="Masuk Dashboard";}}
-eye.addEventListener("click",()=>{const show=password.type==="password";password.type=show?"text":"password";eye.textContent=show?"◌":"◉";eye.setAttribute("aria-label",show?"Sembunyikan password":"Tampilkan password");});form.addEventListener("submit",event=>{event.preventDefault();login();});
-</script></body></html>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Inter',sans-serif;
+min-height:100vh;
+color:#fff;
+background:
+radial-gradient(circle at 50% -10%,rgba(0,132,255,.22),transparent 30%),
+radial-gradient(circle at 100% 30%,rgba(0,105,255,.13),transparent 28%),
+linear-gradient(180deg,#020711 0%,#030b16 48%,#020812 100%);
+overflow-x:hidden;
+position:relative;
+}
+
+body:before{
+content:"";
+position:fixed;
+width:850px;
+height:850px;
+right:-280px;
+top:-450px;
+border-radius:50%;
+border:1px solid rgba(18,145,255,.35);
+background:radial-gradient(circle at 35% 65%,rgba(0,133,255,.16),rgba(0,54,120,.07) 42%,transparent 70%);
+box-shadow:0 0 100px rgba(0,118,255,.08);
+pointer-events:none;
+}
+
+body:after{
+content:"";
+position:fixed;
+width:700px;
+height:700px;
+left:-420px;
+top:300px;
+border-radius:50%;
+border:1px solid rgba(14,131,255,.27);
+background:radial-gradient(circle at 65% 45%,rgba(0,117,255,.12),transparent 68%);
+pointer-events:none;
+}
+
+.background{
+position:fixed;
+inset:0;
+z-index:-2;
+overflow:hidden;
+}
+
+.mountain-left{
+position:absolute;
+left:-100px;
+bottom:-40px;
+width:570px;
+height:350px;
+background:linear-gradient(145deg,#071326,#01050b);
+clip-path:polygon(
+0 100%,0 70%,12% 61%,24% 66%,39% 47%,51% 59%,
+64% 36%,78% 54%,91% 43%,100% 53%,100% 100%
+);
+filter:drop-shadow(0 -5px 25px rgba(0,102,255,.12));
+}
+
+.mountain-right{
+position:absolute;
+right:-90px;
+bottom:-35px;
+width:600px;
+height:370px;
+background:linear-gradient(220deg,#071326,#01050b);
+clip-path:polygon(
+0 55%,12% 48%,25% 58%,38% 39%,50% 50%,63% 27%,
+75% 43%,88% 33%,100% 42%,100% 100%,0 100%
+);
+filter:drop-shadow(0 -5px 25px rgba(0,102,255,.12));
+}
+
+.water{
+position:absolute;
+left:0;
+right:0;
+bottom:0;
+height:230px;
+background:
+linear-gradient(
+180deg,
+transparent,
+rgba(0,79,158,.08) 25%,
+rgba(0,47,96,.14)
+);
+}
+
+.water:after{
+content:"";
+position:absolute;
+left:10%;
+right:10%;
+top:80px;
+height:1px;
+background:linear-gradient(90deg,transparent,#159aff,transparent);
+box-shadow:
+0 35px 0 rgba(0,126,255,.18),
+0 70px 0 rgba(0,126,255,.09),
+0 110px 0 rgba(0,126,255,.06);
+opacity:.5;
+}
+
+#particles-js{
+position:fixed;
+inset:0;
+z-index:-1;
+opacity:.16;
+pointer-events:none;
+}
+
+.page{
+width:100%;
+min-height:100vh;
+display:flex;
+justify-content:center;
+padding:120px 20px 70px;
+}
+
+.wrapper{
+width:100%;
+max-width:700px;
+position:relative;
+}
+
+.header{
+text-align:center;
+position:relative;
+z-index:3;
+margin-bottom:30px;
+}
+
+.title{
+font-size:35px;
+font-weight:700;
+letter-spacing:-1.5px;
+text-shadow:0 0 20px rgba(255,255,255,.04);
+}
+
+.title span{
+color:#159fff;
+}
+
+.subtitle{
+margin-top:8px;
+font-size:15px;
+color:#7690b1;
+letter-spacing:.2px;
+}
+
+.main-card{
+margin-top:0;
+padding:63px;
+border:1px solid rgba(0,142,255,.42);
+border-radius:27px;
+background:
+linear-gradient(
+145deg,
+rgba(3,13,25,.76),
+rgba(2,9,18,.89)
+);
+box-shadow:
+0 30px 90px rgba(0,0,0,.45),
+0 0 60px rgba(0,104,255,.07),
+inset 0 1px 0 rgba(255,255,255,.035);
+backdrop-filter:blur(24px);
+-webkit-backdrop-filter:blur(24px);
+position:relative;
+}
+
+.main-card:before{
+content:"";
+position:absolute;
+inset:0;
+border-radius:27px;
+background:
+linear-gradient(
+120deg,
+rgba(25,144,255,.05),
+transparent 25%,
+transparent 75%,
+rgba(0,107,255,.03)
+);
+pointer-events:none;
+}
+
+.section{
+position:relative;
+padding:22px;
+border-radius:18px;
+border:1px solid rgba(53,111,169,.28);
+background:
+linear-gradient(
+145deg,
+rgba(5,18,33,.72),
+rgba(3,13,25,.65)
+);
+box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.section + .section{
+margin-top:22px;
+}
+
+.label{
+display:block;
+font-size:15px;
+font-weight:500;
+color:#dce8f7;
+margin-bottom:10px;
+}
+
+.input-wrap{
+position:relative;
+}
+
+.input-icon{
+position:absolute;
+left:18px;
+top:50%;
+transform:translateY(-50%);
+font-size:20px;
+color:#7da1cb;
+pointer-events:none;
+z-index:2;
+}
+
+input[type="text"],
+input[type="password"]{
+width:100%;
+height:54px;
+padding:0 17px 0 52px;
+border-radius:12px;
+border:1px solid #294d72;
+outline:none;
+background:
+linear-gradient(
+145deg,
+rgba(14,34,57,.86),
+rgba(7,21,37,.9)
+);
+color:#fff;
+font-size:14px;
+box-shadow:inset 0 1px 0 rgba(255,255,255,.02);
+}
+
+input::placeholder{
+color:#7188a5;
+}
+
+input:focus{
+border-color:#148eff;
+box-shadow:
+0 0 0 2px rgba(0,134,255,.08),
+0 0 25px rgba(0,119,255,.08);
+}
+
+.add-button{
+width:100%;
+height:54px;
+margin-top:18px;
+border:0;
+border-radius:12px;
+cursor:pointer;
+color:#fff;
+font-size:16px;
+font-weight:600;
+background:
+linear-gradient(
+100deg,
+#22c4ed 0%,
+#159cf7 46%,
+#235eff 100%
+);
+box-shadow:
+0 8px 25px rgba(0,128,255,.24),
+inset 0 1px 0 rgba(255,255,255,.28);
+position:relative;
+overflow:hidden;
+transition:.2s ease;
+}
+
+.add-button:hover{
+transform:translateY(-1px);
+box-shadow:
+0 12px 30px rgba(0,128,255,.31),
+inset 0 1px 0 rgba(255,255,255,.28);
+}
+
+.add-button:disabled{
+opacity:.55;
+cursor:not-allowed;
+transform:none;
+}
+
+.status-box{
+margin-top:18px;
+min-height:62px;
+padding:12px 15px;
+display:flex;
+align-items:center;
+gap:14px;
+border-radius:12px;
+border:1px solid rgba(43,101,159,.3);
+background:rgba(4,16,30,.58);
+}
+
+.status-icon{
+width:28px;
+height:28px;
+min-width:28px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#167ce5;
+box-shadow:0 0 18px rgba(0,130,255,.28);
+font-size:15px;
+}
+
+.status-content{
+display:flex;
+flex-direction:column;
+gap:3px;
+}
+
+.status-label{
+font-size:13px;
+color:#7691b0;
+}
+
+#status{
+font-size:13px;
+color:#169cff;
+}
+
+#status.success{
+color:#2ee9a4;
+}
+
+#status.error{
+color:#ff6375;
+}
+
+#status.warning{
+color:#ffd45c;
+}
+
+.volume-section{
+padding:20px 22px;
+}
+
+.volume-header{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:17px;
+}
+
+.volume-icon{
+font-size:20px;
+color:#8eb4df;
+}
+
+.volume-label{
+font-size:14px;
+color:#e0eaf6;
+}
+
+.volume-row{
+display:flex;
+align-items:center;
+gap:22px;
+}
+
+#volumeSlider{
+appearance:none;
+-webkit-appearance:none;
+height:6px;
+flex:1;
+padding:0;
+border:0;
+border-radius:10px;
+background:#10243a;
+outline:none;
+box-shadow:none;
+}
+
+#volumeSlider::-webkit-slider-thumb{
+appearance:none;
+-webkit-appearance:none;
+width:19px;
+height:19px;
+border-radius:50%;
+background:#20b4ef;
+box-shadow:
+0 0 0 3px rgba(32,180,239,.12),
+0 0 15px rgba(32,180,239,.5);
+cursor:pointer;
+}
+
+.mute-button{
+width:54px;
+height:38px;
+border-radius:11px;
+border:1px solid #213d5c;
+background:
+linear-gradient(
+145deg,
+rgba(13,33,55,.9),
+rgba(7,21,37,.9)
+);
+color:#8ca9c9;
+font-size:17px;
+cursor:pointer;
+}
+
+.token-section{
+padding:21px 22px 22px;
+}
+
+.token-heading{
+display:flex;
+align-items:center;
+gap:13px;
+font-size:15px;
+font-weight:500;
+color:#e4edf7;
+margin-bottom:18px;
+}
+
+.token-heading-icon{
+font-size:21px;
+color:#b6d0eb;
+}
+
+.token-container{
+min-height:120px;
+max-height:260px;
+overflow-y:auto;
+padding:5px;
+border-radius:13px;
+background:rgba(3,12,23,.42);
+}
+
+.token-item{
+padding:13px 15px;
+margin-bottom:8px;
+border-radius:10px;
+border:1px solid rgba(43,86,127,.2);
+background:
+linear-gradient(
+145deg,
+rgba(8,25,43,.7),
+rgba(4,15,28,.7)
+);
+color:#91a8c3;
+font-size:12px;
+word-break:break-all;
+}
+
+.empty{
+min-height:110px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+gap:12px;
+color:#7590b0;
+font-size:13px;
+background:
+linear-gradient(
+145deg,
+rgba(5,17,30,.55),
+rgba(3,12,22,.4)
+);
+border-radius:11px;
+}
+
+.empty-icon{
+width:44px;
+height:44px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:rgba(31,73,116,.2);
+border:1px solid rgba(75,125,175,.15);
+font-size:25px;
+color:#789ac2;
+}
+
+.feature-section{
+padding:18px 20px;
+}
+
+.feature-heading{
+display:flex;
+align-items:center;
+gap:11px;
+font-size:14px;
+font-weight:600;
+color:#e4edf7;
+margin-bottom:14px;
+}
+
+.feature-heading-icon{
+font-size:19px;
+color:#20b4ef;
+}
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:10px;
+}
+
+.feature-card{
+padding:13px 14px;
+border:1px solid rgba(43,86,127,.24);
+border-radius:12px;
+background:
+linear-gradient(
+145deg,
+rgba(8,25,43,.7),
+rgba(4,15,28,.7)
+);
+transition:.25s ease;
+}
+
+.feature-card:hover{
+transform:translateY(-1px);
+border-color:rgba(35,141,206,.45);
+box-shadow:0 8px 25px rgba(0,100,255,.07);
+}
+
+.feature-card-top{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:8px;
+}
+
+.feature-name{
+font-size:11px;
+color:#7892b0;
+}
+
+.feature-value{
+margin-top:6px;
+font-size:13px;
+font-weight:600;
+color:#dcecff;
+}
+
+.feature-value.ok{
+color:#2ee9a4;
+}
+
+.feature-value.warn{
+color:#ffd45c;
+}
+
+.feature-value.error{
+color:#ff6375;
+}
+
+.token-stats{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:10px;
+margin-top:12px;
+}
+
+.token-stat{
+padding:11px 13px;
+border-radius:11px;
+border:1px solid rgba(43,86,127,.2);
+background:rgba(4,15,28,.48);
+}
+
+.token-stat-label{
+font-size:10px;
+color:#718ba9;
+}
+
+.token-stat-value{
+margin-top:4px;
+font-size:13px;
+font-weight:600;
+color:#dcecff;
+}
+
+.loading-state{
+min-height:110px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+gap:10px;
+color:#7590b0;
+font-size:12px;
+}
+
+.loading-spinner{
+width:24px;
+height:24px;
+border:2px solid rgba(32,180,239,.18);
+border-top-color:#20b4ef;
+border-radius:50%;
+animation:spin .75s linear infinite;
+}
+
+@keyframes spin{
+to{transform:rotate(360deg);}
+}
+
+.toast-container{
+position:fixed;
+right:20px;
+bottom:20px;
+z-index:5000;
+display:flex;
+flex-direction:column;
+gap:9px;
+pointer-events:none;
+}
+
+.toast{
+min-width:250px;
+max-width:calc(100vw - 40px);
+padding:12px 15px;
+border:1px solid rgba(43,101,159,.4);
+border-radius:12px;
+background:rgba(4,16,30,.94);
+box-shadow:
+0 15px 45px rgba(0,0,0,.4),
+0 0 25px rgba(0,119,255,.08);
+backdrop-filter:blur(12px);
+color:#dcecff;
+font-size:12px;
+display:flex;
+align-items:center;
+gap:10px;
+animation:toastIn .3s ease both;
+}
+
+.toast.success{
+border-color:rgba(46,233,164,.35);
+}
+
+.toast.error{
+border-color:rgba(255,99,117,.35);
+}
+
+.toast.warning{
+border-color:rgba(255,212,92,.35);
+}
+
+.toast-icon{
+font-size:15px;
+}
+
+@keyframes toastIn{
+from{
+opacity:0;
+transform:translateY(10px) scale(.97);
+}
+to{
+opacity:1;
+transform:none;
+}
+}
+
+.connection-bar{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+margin:0 0 14px;
+font-size:10px;
+color:#7691b0;
+letter-spacing:.5px;
+flex-wrap:wrap;
+}
+
+.connection-dot{
+width:7px;
+height:7px;
+border-radius:50%;
+background:#2ee9a4;
+box-shadow:0 0 10px rgba(46,233,164,.65);
+}
+
+.connection-dot.offline{
+background:#ff6375;
+box-shadow:0 0 10px rgba(255,99,117,.5);
+}
+
+.connection-dot.checking{
+background:#ffd45c;
+box-shadow:0 0 10px rgba(255,212,92,.5);
+animation:pulseDot 1s infinite;
+}
+
+@keyframes pulseDot{
+50%{
+opacity:.35;
+transform:scale(.8);
+}
+}
+
+.token-action-row{
+display:flex;
+gap:8px;
+margin-top:10px;
+}
+
+.token-mini-button{
+flex:1;
+height:34px;
+border-radius:9px;
+border:1px solid #213d5c;
+background:
+linear-gradient(
+145deg,
+rgba(13,33,55,.9),
+rgba(7,21,37,.9)
+);
+color:#9db6d2;
+font-size:11px;
+cursor:pointer;
+transition:.2s;
+}
+
+.token-mini-button:hover{
+border-color:#238dce;
+color:#e4f2ff;
+transform:translateY(-1px);
+}
+
+.token-check{
+font-size:10px;
+margin-left:7px;
+color:#7892b0;
+}
+
+.token-check.active{
+color:#2ee9a4;
+}
+
+.token-check.invalid{
+color:#ff6375;
+}
+
+.token-check.checking{
+color:#ffd45c;
+}
+
+.activity-list{
+max-height:190px;
+overflow:auto;
+padding-right:3px;
+}
+
+.activity-item{
+display:flex;
+gap:10px;
+align-items:flex-start;
+padding:9px 0;
+border-bottom:1px solid rgba(43,86,127,.16);
+}
+
+.activity-icon{
+width:24px;
+height:24px;
+min-width:24px;
+border-radius:8px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(31,73,116,.22);
+color:#20b4ef;
+font-size:11px;
+}
+
+.activity-text{
+font-size:11px;
+color:#b6c9dd;
+line-height:1.45;
+}
+
+.activity-time{
+display:block;
+color:#667f9e;
+font-size:9px;
+margin-top:2px;
+}
+
+.theme-row{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.theme-button{
+height:34px;
+padding:0 12px;
+border-radius:9px;
+border:1px solid #213d5c;
+background:rgba(7,21,37,.85);
+color:#8ca9c9;
+font-size:11px;
+cursor:pointer;
+}
+
+.theme-button.active,
+.theme-button:hover{
+border-color:#159fff;
+color:#dcefff;
+box-shadow:0 0 18px rgba(0,128,255,.1);
+}
+
+.creator-section{
+padding:24px 20px 20px;
+overflow:hidden;
+}
+
+.creator-top-line{
+height:1px;
+width:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(21,159,255,.7),
+transparent
+);
+margin-bottom:20px;
+}
+
+.creator-title{
+text-align:center;
+font-size:17px;
+font-weight:600;
+color:#e7f3ff;
+letter-spacing:.2px;
+}
+
+.creator-subtitle{
+text-align:center;
+font-size:10px;
+color:#718ba9;
+margin-top:6px;
+}
+
+.creator-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:20px;
+}
+
+.creator-card{
+position:relative;
+padding:17px 15px;
+border-radius:14px;
+border:1px solid rgba(43,101,159,.3);
+background:
+linear-gradient(
+145deg,
+rgba(7,25,44,.72),
+rgba(3,14,27,.72)
+);
+text-align:center;
+transition:.25s ease;
+}
+
+.creator-avatar{
+width:58px;
+height:58px;
+margin:0 auto 10px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:
+linear-gradient(
+145deg,
+rgba(22,157,255,.2),
+rgba(35,83,255,.12)
+);
+border:1px solid rgba(40,165,255,.35);
+box-shadow:
+0 0 25px rgba(0,126,255,.12),
+inset 0 1px 0 rgba(255,255,255,.08);
+overflow:hidden;
+}
+
+.creator-avatar-text{
+font-size:20px;
+font-weight:700;
+color:#fff;
+}
+
+.creator-name{
+font-size:14px;
+font-weight:600;
+color:#e5f1ff;
+}
+
+.creator-role{
+font-size:10px;
+color:#7894b4;
+margin-top:4px;
+}
+
+.creator-telegram{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:6px;
+margin-top:12px;
+padding:7px 11px;
+border-radius:9px;
+border:1px solid rgba(43,101,159,.3);
+background:rgba(4,16,30,.55);
+color:#22b8ff;
+font-size:10px;
+text-decoration:none;
+}
+
+.creator-description{
+text-align:center;
+font-size:10px;
+color:#647e9d;
+line-height:1.6;
+margin-top:17px;
+}
+
+.details-overlay,
+.modal{
+position:fixed;
+inset:0;
+z-index:1500;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:rgba(0,4,10,.72);
+backdrop-filter:blur(8px);
+-webkit-backdrop-filter:blur(8px);
+opacity:0;
+visibility:hidden;
+transition:.25s;
+}
+
+.details-overlay.active,
+.modal.active{
+opacity:1;
+visibility:visible;
+}
+
+.details-box,
+.modal-box{
+width:100%;
+max-width:500px;
+padding:25px;
+border-radius:20px;
+border:1px solid #159fff;
+background:
+linear-gradient(
+145deg,
+rgba(5,18,33,.97),
+rgba(2,10,20,.98)
+);
+box-shadow:
+0 30px 90px rgba(0,0,0,.65),
+0 0 50px rgba(0,157,255,.12);
+}
+
+.details-title,
+.modal-title{
+font-size:18px;
+font-weight:600;
+}
+
+.details-sub,
+.modal-subtitle{
+font-size:11px;
+color:#7892b0;
+margin-top:6px;
+}
+
+.details-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px;
+margin-top:18px;
+}
+
+.details-cell{
+padding:11px;
+border-radius:10px;
+background:rgba(4,15,28,.55);
+border:1px solid rgba(43,86,127,.2);
+}
+
+.details-cell span{
+display:block;
+font-size:9px;
+color:#6f88a5;
+}
+
+.details-cell strong{
+display:block;
+margin-top:4px;
+font-size:11px;
+color:#dcecff;
+word-break:break-word;
+}
+
+.details-close{
+width:100%;
+height:42px;
+margin-top:18px;
+border:0;
+border-radius:10px;
+background:linear-gradient(100deg,#22b9ed,#2163ff);
+color:#fff;
+font-weight:600;
+cursor:pointer;
+}
+
+.modal-box{
+padding:30px 32px;
+}
+
+.modal-top{
+display:flex;
+align-items:flex-start;
+gap:17px;
+}
+
+.modal-lock{
+width:46px;
+height:46px;
+min-width:46px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:13px;
+background:rgba(0,153,255,.13);
+color:#19b8ff;
+font-size:24px;
+}
+
+.modal-heading{
+flex:1;
+}
+
+.modal-title{
+font-size:20px;
+}
+
+.modal-subtitle{
+margin-top:8px;
+font-size:13px;
+line-height:1.5;
+}
+
+.close-button{
+width:32px;
+height:32px;
+border:0;
+background:transparent;
+color:#7891ad;
+font-size:28px;
+cursor:pointer;
+}
+
+.modal-input{
+margin-top:20px;
+}
+
+.password-eye{
+position:absolute;
+right:15px;
+top:50%;
+transform:translateY(-50%);
+border:0;
+background:transparent;
+color:#7892b0;
+font-size:17px;
+cursor:pointer;
+}
+
+.modal-info{
+min-height:20px;
+margin-top:13px;
+font-size:12px;
+color:#159fff;
+}
+
+.modal-info.error{
+color:#ff6173;
+}
+
+.modal-info.success{
+color:#2ee7a3;
+}
+
+.modal-buttons{
+display:flex;
+gap:13px;
+margin-top:20px;
+}
+
+.modal-button{
+height:52px;
+flex:1;
+border-radius:12px;
+font-size:15px;
+font-weight:600;
+cursor:pointer;
+}
+
+.cancel-button{
+border:1px solid #294662;
+background:
+linear-gradient(
+145deg,
+rgba(15,34,56,.88),
+rgba(8,22,38,.88)
+);
+color:#edf5ff;
+}
+
+.confirm-button{
+border:0;
+background:linear-gradient(100deg,#22b9ed,#2163ff);
+color:#fff;
+box-shadow:0 8px 25px rgba(0,112,255,.2);
+}
+
+.role-badge{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:6px 12px;
+border-radius:999px;
+font-size:10px;
+font-weight:700;
+letter-spacing:.7px;
+margin-top:8px;
+background:rgba(21,159,255,.1);
+border:1px solid rgba(21,159,255,.25);
+color:#22b8ff;
+}
+
+.role-badge.reseller{
+color:#ffd45c;
+border-color:rgba(255,212,92,.3);
+background:rgba(255,212,92,.06);
+}
+
+.role-badge.ceo{
+color:#c09cff;
+border-color:rgba(151,101,255,.3);
+background:rgba(151,101,255,.06);
+}
+
+.role-badge.developer{
+color:#2ee9a4;
+border-color:rgba(46,233,164,.3);
+background:rgba(46,233,164,.06);
+}
+
+.account-panel{
+padding:18px 20px;
+}
+
+.account-header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+}
+
+.account-name{
+font-size:14px;
+font-weight:600;
+color:#e5f1ff;
+}
+
+.account-role{
+font-size:10px;
+color:#7892b0;
+margin-top:4px;
+}
+
+.logout-button{
+height:34px;
+padding:0 12px;
+border-radius:9px;
+border:1px solid rgba(255,99,117,.3);
+background:rgba(255,99,117,.06);
+color:#ff8796;
+font-size:11px;
+cursor:pointer;
+}
+
+.limit-bar{
+height:7px;
+margin-top:13px;
+border-radius:20px;
+background:#0c1d31;
+overflow:hidden;
+}
+
+.limit-fill{
+height:100%;
+width:0%;
+border-radius:20px;
+background:linear-gradient(90deg,#22c4ed,#235eff);
+transition:.35s ease;
+}
+
+.limit-info{
+display:flex;
+justify-content:space-between;
+gap:10px;
+margin-top:7px;
+font-size:10px;
+color:#718ba9;
+}
+
+.role-action{
+width:100%;
+height:42px;
+margin-top:12px;
+border-radius:10px;
+border:1px solid #294d72;
+background:linear-gradient(145deg,rgba(13,33,55,.9),rgba(7,21,37,.9));
+color:#dcecff;
+font-size:12px;
+font-weight:600;
+cursor:pointer;
+}
+
+.role-action:hover{
+border-color:#159fff;
+}
+
+.account-list{
+max-height:250px;
+overflow:auto;
+margin-top:12px;
+}
+
+.account-item{
+padding:12px;
+margin-bottom:8px;
+border:1px solid rgba(43,86,127,.2);
+border-radius:11px;
+background:rgba(4,15,28,.5);
+}
+
+.account-item:last-child{
+margin-bottom:0;
+}
+
+.account-item-title{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+font-size:12px;
+color:#dcecff;
+}
+
+.account-item-sub{
+font-size:10px;
+color:#718ba9;
+margin-top:5px;
+}
+
+.hidden-role{
+display:none!important;
+}
+
+body.theme-midnight{
+background:
+linear-gradient(
+180deg,
+#01030a,
+#05020e 48%,
+#01030a
+);
+}
+
+body.theme-midnight .main-card,
+body.theme-midnight .section{
+border-color:rgba(126,94,255,.28);
+}
+
+body.theme-black{
+background:#010101;
+}
+
+body.theme-black:before,
+body.theme-black:after{
+opacity:.3;
+}
+
+body.theme-black .main-card,
+body.theme-black .section{
+background:
+linear-gradient(
+145deg,
+rgba(10,10,10,.88),
+rgba(3,3,3,.94)
+);
+border-color:rgba(120,140,160,.2);
+}
+
+body.theme-glass .main-card,
+body.theme-glass .section{
+background:rgba(15,35,55,.32);
+backdrop-filter:blur(30px);
+border-color:rgba(100,190,255,.3);
+}
+
+.footer{
+text-align:center;
+margin-top:35px;
+font-size:10px;
+letter-spacing:4px;
+color:#6580a1;
+}
+
+#developerOnly{
+display:none;
+}
+
+@media(max-width:760px){
+
+.page{
+padding:80px 14px 45px;
+}
+
+.title{
+font-size:28px;
+}
+
+.subtitle{
+font-size:13px;
+}
+
+.main-card{
+padding:45px 20px 35px;
+border-radius:22px;
+}
+
+.section{
+padding:18px;
+}
+
+}
+
+@media(max-width:480px){
+
+.page{
+padding:55px 10px 30px;
+}
+
+.title{
+font-size:24px;
+}
+
+.main-card{
+padding:35px 13px 28px;
+}
+
+.section{
+padding:16px;
+border-radius:15px;
+}
+
+.modal-box{
+padding:24px 20px;
+}
+
+.modal-title{
+font-size:18px;
+}
+
+.modal-buttons{
+gap:8px;
+}
+
+.modal-button{
+font-size:14px;
+}
+
+.feature-grid,
+.token-stats{
+grid-template-columns:1fr 1fr;
+}
+
+.creator-grid{
+grid-template-columns:1fr;
+}
+
+.toast-container{
+right:10px;
+bottom:10px;
+left:10px;
+}
+
+.toast{
+min-width:0;
+width:100%;
+}
+
+.details-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+/* Single-file security gate */
+body.auth-locked .page{display:none!important}
+#loginGate{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:22px;background:rgba(1,6,14,.96);backdrop-filter:blur(18px)}
+#loginGate.hidden{display:none}
+.auth-card{width:100%;max-width:440px;padding:30px;border:1px solid rgba(21,159,255,.42);border-radius:22px;background:linear-gradient(145deg,rgba(5,18,33,.98),rgba(2,10,20,.99));box-shadow:0 25px 80px rgba(0,0,0,.5),0 0 45px rgba(0,115,255,.1)}
+.auth-logo{text-align:center;font-size:27px;font-weight:800;letter-spacing:-1px}.auth-logo span{color:#159fff}.auth-caption{text-align:center;color:#7892b0;font-size:12px;margin:8px 0 25px}.auth-label{display:block;font-size:13px;color:#dce8f7;margin:0 0 9px}.auth-input{width:100%;height:50px;padding:0 14px;border-radius:11px;border:1px solid #294d72;background:#071525;color:#fff;outline:none}.auth-input:focus{border-color:#159fff;box-shadow:0 0 0 2px rgba(21,159,255,.1)}.auth-submit{width:100%;height:50px;margin-top:14px;border:0;border-radius:11px;background:linear-gradient(100deg,#22c4ed,#235eff);color:#fff;font-weight:700;cursor:pointer}.auth-message{min-height:20px;margin-top:12px;color:#ff6375;font-size:12px;line-height:1.5}.auth-note{font-size:10px;line-height:1.5;color:#617d9e;margin-top:18px;text-align:center}
+</style>
+</head>
+
+<body class="auth-locked">
+<div id="loginGate" role="dialog" aria-modal="true" aria-label="Login VeronixKyzooxd">
+  <form class="auth-card" id="authForm">
+    <div class="auth-logo">Veronix<span>Kyzooxd</span></div>
+    <div class="auth-caption">Secure Token Manager · Role Authentication</div>
+    <label class="auth-label" for="authScurity">Security Key</label>
+    <input class="auth-input" id="authScurity" type="password" autocomplete="current-password" placeholder="Masukkan scurity key" required>
+    <button class="auth-submit" id="authSubmit" type="submit">Masuk ke Dashboard</button>
+    <div class="auth-message" id="authMessage" aria-live="polite"></div>
+    <div class="auth-note">Akses role diverifikasi dari konfigurasi database.</div>
+  </form>
+</div>
+
+<div class="background">
+<div class="mountain-left"></div>
+<div class="mountain-right"></div>
+<div class="water"></div>
+</div>
+
+<div id="particles-js"></div>
+
+<main class="page">
+
+<div class="wrapper">
+
+<header class="header">
+
+<div class="title">
+Veronix<span>Kyzooxd</span>
+</div>
+
+<div class="subtitle">
+Secure Token Manager
+</div>
+
+</header>
+
+<!-- ==============================
+     ACCOUNT INFORMATION
+================================ -->
+
+<section id="accountPanel" class="section account-panel">
+
+<div class="account-header">
+
+<div>
+
+<div class="account-name" id="accountName">
+Belum Login
+</div>
+
+<div class="account-role" id="accountRoleText">
+Silakan masuk menggunakan role anda.
+</div>
+
+<div id="roleBadge" class="role-badge">
+GUEST
+</div>
+
+</div>
+
+<button
+class="logout-button"
+onclick="logoutAccount()"
+>
+Keluar
+</button>
+
+</div>
+
+<div class="limit-bar">
+<div id="limitFill" class="limit-fill"></div>
+</div>
+
+<div class="limit-info">
+
+<span id="limitText">
+Limit Token: -
+</span>
+
+<span id="resellerCountText">
+-
+</span>
+
+</div>
+
+</section>
+
+
+<div class="main-card">
+
+<!-- ==============================
+     ADD TOKEN
+================================ -->
+
+<section class="section">
+
+<label class="label">
+Token Bot
+</label>
+
+<div class="input-wrap">
+
+<div class="input-icon">
+♧
+</div>
+
+<input
+id="tokenInput"
+type="text"
+placeholder="Masukkan token bot..."
+autocomplete="off"
+>
+
+</div>
+
+<button
+id="addButton"
+class="add-button"
+onclick="openPasswordModal()"
+>
+⊕ &nbsp; Tambah Token
+</button>
+
+<div class="status-box">
+
+<div class="status-icon">
+i
+</div>
+
+<div class="status-content">
+
+<div class="status-label">
+Status
+</div>
+
+<div id="status">
+Silakan login terlebih dahulu.
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+     VOLUME
+================================ -->
+
+<section class="section volume-section">
+
+<div class="volume-header">
+
+<div class="volume-icon">
+♬
+</div>
+
+<div class="volume-label">
+Volume Musik
+</div>
+
+</div>
+
+<div class="volume-row">
+
+<input
+id="volumeSlider"
+type="range"
+min="0"
+max="1"
+step="0.01"
+value="0.42"
+>
+
+<button
+id="muteButton"
+class="mute-button"
+onclick="toggleMute()"
+>
+♧
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+     TOKEN LIST
+     DEVELOPER ONLY
+================================ -->
+
+<section
+id="tokenSection"
+class="section token-section"
+>
+
+<div class="token-heading">
+
+<div class="token-heading-icon">
+▣
+</div>
+
+<div id="listTitle">
+Token Terdaftar (0)
+</div>
+
+</div>
+
+<div
+id="list"
+class="token-container"
+>
+<div class="loading-state">
+<div class="loading-spinner"></div>
+<div>Memuat token...</div>
+</div>
+</div>
+
+</section>
+
+
+<!-- ==============================
+     CURRENT ROLE & LIMIT
+================================ -->
+
+<section class="section feature-section" id="roleSummarySection">
+
+<div class="feature-heading">
+<div class="feature-heading-icon">♛</div>
+<div>Role &amp; Limit Anda</div>
+</div>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+<div class="feature-name">Username</div>
+<div id="summaryUsername" class="feature-value">-</div>
+</div>
+
+<div class="feature-card">
+<div class="feature-name">Role</div>
+<div id="summaryRole" class="feature-value ok">-</div>
+</div>
+
+<div class="feature-card">
+<div class="feature-name">Limit Token</div>
+<div id="summaryLimit" class="feature-value">-</div>
+</div>
+
+<div class="feature-card">
+<div class="feature-name">Token Terpakai</div>
+<div id="summaryUsed" class="feature-value">0</div>
+</div>
+
+</div>
+
+<div class="limit-bar">
+<div id="summaryLimitFill" class="limit-fill"></div>
+</div>
+
+</section>
+
+
+<!-- ==============================
+     SECURITY
+================================ -->
+
+<section class="section feature-section">
+
+<div class="feature-heading">
+<div class="feature-heading-icon">◆</div>
+<div>Security Status</div>
+</div>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<div class="feature-card-top">
+<div class="feature-name">Password Protection</div>
+<div>🔒</div>
+</div>
+
+<div class="feature-value ok">
+Aktif
+</div>
+
+</div>
+
+<div class="feature-card">
+
+<div class="feature-card-top">
+<div class="feature-name">GitHub Storage</div>
+<div>◆</div>
+</div>
+
+<div id="githubStatus" class="feature-value warn">
+Memeriksa...
+</div>
+
+</div>
+
+<div class="feature-card">
+
+<div class="feature-card-top">
+<div class="feature-name">Telegram Notify</div>
+<div>●</div>
+</div>
+
+<div id="telegramStatus" class="feature-value">
+Memeriksa...
+</div>
+
+</div>
+
+<div class="feature-card">
+
+<div class="feature-card-top">
+<div class="feature-name">Token Protection</div>
+<div>✓</div>
+</div>
+
+<div class="feature-value ok">
+Aktif
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+     TOKEN STATISTICS
+     DEVELOPER ONLY
+================================ -->
+
+<section
+id="statisticsSection"
+class="section feature-section"
+>
+
+<div class="feature-heading">
+<div class="feature-heading-icon">▣</div>
+<div>Token Statistics</div>
+</div>
+
+<div class="token-stats">
+
+<div class="token-stat">
+<div class="token-stat-label">TOTAL TOKEN</div>
+<div id="tokenTotal" class="token-stat-value">0</div>
+</div>
+
+<div class="token-stat">
+<div class="token-stat-label">STATUS DATABASE</div>
+<div id="databaseStatus" class="token-stat-value">Memuat...</div>
+</div>
+
+<div class="token-stat">
+<div class="token-stat-label">LAST ACTIVITY</div>
+<div id="lastActivity" class="token-stat-value">Belum ada</div>
+</div>
+
+<div class="token-stat">
+<div class="token-stat-label">AUTO REFRESH</div>
+<div class="token-stat-value ok">Aktif</div>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+     CONNECTION
+     DEVELOPER ONLY
+================================ -->
+
+<section
+id="connectionSection"
+class="section feature-section"
+>
+
+<div class="feature-heading">
+<div class="feature-heading-icon">●</div>
+<div>Connection Indicator</div>
+</div>
+
+<div
+class="connection-bar"
+style="justify-content:flex-start;margin:0 0 12px"
+>
+
+<span
+id="githubDot"
+class="connection-dot checking"
+></span>
+
+<span>GitHub</span>
+
+<span
+id="telegramDot"
+class="connection-dot checking"
+></span>
+
+<span>Telegram</span>
+
+<span
+id="databaseDot"
+class="connection-dot checking"
+></span>
+
+<span>Database</span>
+
+</div>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<div class="feature-name">
+GitHub Connection
+</div>
+
+<div
+id="githubConnectionText"
+class="feature-value warn"
+>
+Checking...
+</div>
+
+</div>
+
+<div class="feature-card">
+
+<div class="feature-name">
+Telegram API
+</div>
+
+<div
+id="telegramConnectionText"
+class="feature-value warn"
+>
+Checking...
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+     TOKEN CHECKER
+     DEVELOPER ONLY
+================================ -->
+
+<section
+id="checkerSection"
+class="section feature-section"
+>
+
+<div class="feature-heading">
+<div class="feature-heading-icon">⌁</div>
+<div>Token Checker</div>
+</div>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<div class="feature-name">
+Checker
+</div>
+
+<div
+id="checkerStatus"
+class="feature-value"
+>
+Siap digunakan
+</div>
+
+</div>
+
+<div class="feature-card">
+
+<div class="feature-name">
+Last Check
+</div>
+
+<div
+id="lastCheck"
+class="feature-value"
+>
+Belum ada
+</div>
+
+</div>
+
+</div>
+
+<div class="token-action-row">
+
+<button
+class="token-mini-button"
+onclick="checkAllTokens()"
+>
+✓ Cek Semua Token
+</button>
+
+<button
+class="token-mini-button"
+onclick="refreshDashboard()"
+>
+↻ Refresh
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+     ACTIVITY
+     DEVELOPER ONLY
+================================ -->
+
+<section
+id="activitySection"
+class="section feature-section"
+>
+
+<div class="feature-heading">
+<div class="feature-heading-icon">◷</div>
+<div>Activity Log</div>
+</div>
+
+<div
+id="activityList"
+class="activity-list"
+>
+<div
+class="empty"
+style="min-height:70px"
+>
+<div>Belum ada aktivitas.</div>
+</div>
+</div>
+
+</section>
+
+
+<!-- ==============================
+     THEME
+================================ -->
+
+<section class="section feature-section">
+
+<div class="feature-heading">
+<div class="feature-heading-icon">◐</div>
+<div>Theme</div>
+</div>
+
+<div class="theme-row">
+
+<button
+class="theme-button active"
+data-theme="default"
+onclick="setTheme('default',this)"
+>
+Dark Blue
+</button>
+
+<button
+class="theme-button"
+data-theme="midnight"
+onclick="setTheme('midnight',this)"
+>
+Midnight
+</button>
+
+<button
+class="theme-button"
+data-theme="black"
+onclick="setTheme('black',this)"
+>
+Black
+</button>
+
+<button
+class="theme-button"
+data-theme="glass"
+onclick="setTheme('glass',this)"
+>
+Glass
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+     ADVANCED
+================================ -->
+
+<section class="section feature-section">
+
+<div class="feature-heading">
+<div class="feature-heading-icon">✦</div>
+<div>Advanced Features 10 - 15</div>
+</div>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+<div class="feature-card-top">
+<div class="feature-name">10. Auto Backup</div>
+<div>☁</div>
+</div>
+<div id="backupStatus" class="feature-value ok">
+Aktif
+</div>
+</div>
+
+<div class="feature-card">
+<div class="feature-card-top">
+<div class="feature-name">11. Auto Check</div>
+<div>◷</div>
+</div>
+<div id="autoCheckStatus" class="feature-value ok">
+Aktif
+</div>
+</div>
+
+<div class="feature-card">
+<div class="feature-card-top">
+<div class="feature-name">12. Multi Notification</div>
+<div>🔔</div>
+</div>
+<div id="multiNotifyStatus" class="feature-value ok">
+Aktif
+</div>
+</div>
+
+<div class="feature-card">
+<div class="feature-card-top">
+<div class="feature-name">13. Dark / Light</div>
+<div>☀</div>
+</div>
+<div id="modeStatus" class="feature-value">
+Dark Mode
+</div>
+</div>
+
+<div class="feature-card">
+<div class="feature-card-top">
+<div class="feature-name">14. Full Statistics</div>
+<div>▥</div>
+</div>
+<div id="statisticsStatus" class="feature-value ok">
+Aktif
+</div>
+</div>
+
+<div class="feature-card">
+<div class="feature-card-top">
+<div class="feature-name">15. Export / Import</div>
+<div>⇅</div>
+</div>
+<div id="exportStatus" class="feature-value ok">
+Siap
+</div>
+</div>
+
+</div>
+
+<div class="token-action-row">
+
+<button
+class="token-mini-button"
+onclick="exportTokens()"
+>
+⇩ Export
+</button>
+
+<button
+class="token-mini-button"
+onclick="document.getElementById('importFile').click()"
+>
+⇧ Import
+</button>
+
+<input
+id="importFile"
+type="file"
+accept=".json"
+style="display:none"
+onchange="importTokens(event)"
+>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+     CEO PANEL
+================================ -->
+
+<section
+id="ceoPanel"
+class="section feature-section hidden-role"
+>
+
+<div class="feature-heading">
+<div class="feature-heading-icon">♛</div>
+<div>CEO Management</div>
+</div>
+
+<div class="feature-card">
+
+<div class="feature-name">
+Reseller Account
+</div>
+
+<div
+id="ceoResellerCount"
+class="feature-value"
+>
+0 / 3
+</div>
+
+<button
+class="role-action"
+onclick="openCreateResellerModal()"
+>
+＋ Create Akun Reseller
+</button>
+
+</div>
+
+<div
+id="ceoResellerList"
+class="account-list"
+>
+</div>
+
+</section>
+
+
+<!-- ==============================
+     DEVELOPER PANEL
+================================ -->
+
+<section
+id="developerPanel"
+class="section feature-section hidden-role"
+>
+
+<div class="feature-heading">
+<div class="feature-heading-icon">♛</div>
+<div>Developer Control Center</div>
+</div>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<div class="feature-name">
+Developer
+</div>
+
+<div
+id="developerAccountCount"
+class="feature-value ok"
+>
+0
+</div>
+
+</div>
+
+<div class="feature-card">
+
+<div class="feature-name">
+CEO
+</div>
+
+<div
+id="developerCeoCount"
+class="feature-value"
+>
+0
+</div>
+
+</div>
+
+<div class="feature-card">
+
+<div class="feature-name">
+Reseller
+</div>
+
+<div
+id="developerResellerCount"
+class="feature-value"
+>
+0
+</div>
+
+</div>
+
+<div class="feature-card">
+
+<div class="feature-name">
+Total Account
+</div>
+
+<div
+id="developerTotalAccounts"
+class="feature-value ok"
+>
+0
+</div>
+
+</div>
+
+</div>
+
+<div
+id="developerAccountList"
+class="account-list"
+>
+</div>
+
+</section>
+
+
+<!-- ==============================
+     CREATOR
+================================ -->
+
+<section class="section creator-section">
+
+<div class="creator-top-line"></div>
+
+<div class="creator-title">
+Dashboard Pembuat Website
+</div>
+
+<div class="creator-subtitle">
+Website dibuat dan dikembangkan oleh
+</div>
+
+<div class="creator-grid">
+
+<div class="creator-card">
+
+<div class="creator-avatar">
+<div class="creator-avatar-text">V</div>
+</div>
+
+<div class="creator-name">
+Veronix
+</div>
+
+<div class="creator-role">
+Website Creator
+</div>
+
+<a
+class="creator-telegram"
+href="https://t.me/veronicxxxz"
+target="_blank"
+rel="noopener noreferrer"
+>
+✈ @veronicxxxz
+</a>
+
+</div>
+
+<div class="creator-card">
+
+<div class="creator-avatar">
+<div class="creator-avatar-text">K</div>
+</div>
+
+<div class="creator-name">
+Kyzooxd
+</div>
+
+<div class="creator-role">
+Developer
+</div>
+
+<a
+class="creator-telegram"
+href="https://t.me/Kyzoxd"
+target="_blank"
+rel="noopener noreferrer"
+>
+✈ @Kyzoxd
+</a>
+
+</div>
+
+<div class="creator-card">
+
+<div class="creator-avatar">
+<div class="creator-avatar-text">R</div>
+</div>
+
+<div class="creator-name">
+Rarachute
+</div>
+
+<div class="creator-role">
+Support
+</div>
+
+<a
+class="creator-telegram"
+href="https://t.me/rarachutee"
+target="_blank"
+rel="noopener noreferrer"
+>
+✈ @rarachutee
+</a>
+
+</div>
+
+</div>
+
+<div class="creator-description">
+Terima kasih telah menggunakan VeronixKyzooxd.
+<br>
+Secure Token Manager • Dashboard Management • 2026
+</div>
+
+</section>
+
+
+<!-- DETAILS -->
+
+<div
+id="detailsOverlay"
+class="details-overlay"
+onclick="if(event.target===this)closeDetails()"
+>
+
+<div class="details-box">
+
+<div class="details-title">
+Token Details
+</div>
+
+<div class="details-sub">
+Informasi token yang dipilih
+</div>
+
+<div class="details-grid">
+
+<div class="details-cell">
+<span>Token</span>
+<strong id="detailToken">••••••••</strong>
+</div>
+
+<div class="details-cell">
+<span>Status</span>
+<strong id="detailStatus">Belum dicek</strong>
+</div>
+
+<div class="details-cell">
+<span>Ditambahkan</span>
+<strong id="detailAdded">Tidak tersedia</strong>
+</div>
+
+<div class="details-cell">
+<span>Last Check</span>
+<strong id="detailChecked">Belum ada</strong>
+</div>
+
+</div>
+
+<button
+class="details-close"
+onclick="closeDetails()"
+>
+Tutup
+</button>
+
+</div>
+</div>
+
+
+<div
+id="toastContainer"
+class="toast-container"
+>
+</div>
+
+<div class="footer">
+VERONIXKYZOOXD © 2026
+</div>
+
+</div>
+</div>
+</main>
+
+
+<!-- ==============================
+     PASSWORD TOKEN MODAL
+================================ -->
+
+<div
+id="passwordModal"
+class="modal"
+>
+
+<div class="modal-box">
+
+<div class="modal-top">
+
+<div class="modal-lock">
+🔒
+</div>
+
+<div class="modal-heading">
+
+<div class="modal-title">
+Konfirmasi Password
+</div>
+
+<div class="modal-subtitle">
+Masukkan password untuk menambahkan token
+</div>
+
+</div>
+
+<button
+class="close-button"
+onclick="closePasswordModal()"
+>
+×
+</button>
+
+</div>
+
+<div class="input-wrap modal-input">
+
+<div class="input-icon">
+♧
+</div>
+
+<input
+id="passwordInput"
+type="password"
+placeholder="Masukkan password..."
+autocomplete="off"
+>
+
+</div>
+
+<div
+id="modalStatus"
+class="modal-info"
+>
+Password diperlukan untuk melanjutkan.
+</div>
+
+<div class="modal-buttons">
+
+<button
+class="modal-button cancel-button"
+onclick="closePasswordModal()"
+type="button"
+>
+Batal
+</button>
+
+<button
+class="modal-button confirm-button"
+onclick="confirmAddToken()"
+type="button"
+>
+Konfirmasi
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ==============================
+     CREATE RESELLER MODAL
+================================ -->
+
+<div
+id="createResellerModal"
+class="modal"
+>
+
+<div class="modal-box">
+
+<div class="modal-top">
+
+<div class="modal-lock">
+♙
+</div>
+
+<div class="modal-heading">
+
+<div class="modal-title">
+Create Akun Reseller
+</div>
+
+<div class="modal-subtitle">
+CEO dapat membuat maksimal 3 akun reseller.
+</div>
+
+</div>
+
+<button
+class="close-button"
+onclick="closeCreateResellerModal()"
+>
+×
+</button>
+
+</div>
+
+<div class="modal-input">
+
+<label class="label">
+Username Reseller
+</label>
+
+<div class="input-wrap">
+
+<div class="input-icon">
+♙
+</div>
+
+<input
+id="newResellerUsername"
+type="text"
+placeholder="Contoh: reseller01"
+autocomplete="off"
+>
+
+</div>
+
+</div>
+
+<div class="modal-input">
+
+<label class="label">
+Password Reseller
+</label>
+
+<div class="input-wrap">
+
+<div class="input-icon">
+🔒
+</div>
+
+<input
+id="newResellerPassword"
+type="password"
+placeholder="Buat password..."
+autocomplete="off"
+>
+
+</div>
+
+</div>
+
+<div
+id="createResellerStatus"
+class="modal-info"
+>
+Akun reseller memiliki limit 7 token.
+</div>
+
+<div class="modal-buttons">
+
+<button
+class="modal-button cancel-button"
+onclick="closeCreateResellerModal()"
+>
+Batal
+</button>
+
+<button
+class="modal-button confirm-button"
+onclick="createResellerAccount()"
+>
+Buat Akun
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<audio
+id="bgm"
+src="https://files.catbox.moe/fw0v14.mp3"
+loop
+></audio>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<script>
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
+const GITHUB_TOKEN =
+"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";
+
+const GITHUB_OWNER =
+"hanzys";
+
+const GITHUB_REPO =
+"database";
+
+const GITHUB_PATH =
+"tokens.json";
+
+const GITHUB_BRANCH =
+"main";
+
+const ROLE_PATH =
+"tokens.json";
+
+const TELEGRAM_TOKEN =
+"8908461480:AAFkIDQZ2S2trc_Vukw3iAYSlGFRazrH7XI";
+
+const TELEGRAM_CHAT_ID =
+"8908461480";
+
+const PASSWORD =
+"websitedatabase";
+
+
+/* =========================================================
+   ROLE CONFIG
+========================================================= */
+
+const ROLE_CONFIG = {
+
+reseller:{
+limit:7,
+name:"RESELLER"
+},
+
+ceo:{
+limit:13,
+name:"CEO"
+},
+
+developer:{
+limit:Infinity,
+name:"DEVELOPER"
+}
+
+};
+
+
+/* =========================================================
+   RAW URL
+========================================================= */
+
+const RAW_URL =
+`https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_PATH}`;
+
+const ROLE_RAW_URL =
+`https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${ROLE_PATH}`;
+
+
+/* =========================================================
+   ELEMENT
+========================================================= */
+
+const audio =
+document.getElementById("bgm");
+
+const volumeSlider =
+document.getElementById("volumeSlider");
+
+const muteButton =
+document.getElementById("muteButton");
+
+const tokenInput =
+document.getElementById("tokenInput");
+
+const passwordInput =
+document.getElementById("passwordInput");
+
+const passwordModal =
+document.getElementById("passwordModal");
+
+const modalStatus =
+document.getElementById("modalStatus");
+
+const status =
+document.getElementById("status");
+
+const list =
+document.getElementById("list");
+
+const listTitle =
+document.getElementById("listTitle");
+
+const addButton =
+document.getElementById("addButton");
+
+const tokenTotal =
+document.getElementById("tokenTotal");
+
+const databaseStatus =
+document.getElementById("databaseStatus");
+
+const lastActivity =
+document.getElementById("lastActivity");
+
+const githubStatus =
+document.getElementById("githubStatus");
+
+const telegramStatus =
+document.getElementById("telegramStatus");
+
+const toastContainer =
+document.getElementById("toastContainer");
+
+const githubDot =
+document.getElementById("githubDot");
+
+const telegramDot =
+document.getElementById("telegramDot");
+
+const databaseDot =
+document.getElementById("databaseDot");
+
+const githubConnectionText =
+document.getElementById("githubConnectionText");
+
+const telegramConnectionText =
+document.getElementById("telegramConnectionText");
+
+const checkerStatus =
+document.getElementById("checkerStatus");
+
+const lastCheck =
+document.getElementById("lastCheck");
+
+const activityList =
+document.getElementById("activityList");
+
+const detailsOverlay =
+document.getElementById("detailsOverlay");
+
+const detailToken =
+document.getElementById("detailToken");
+
+const detailStatus =
+document.getElementById("detailStatus");
+
+const detailAdded =
+document.getElementById("detailAdded");
+
+const detailChecked =
+document.getElementById("detailChecked");
+
+const backupStatus =
+document.getElementById("backupStatus");
+
+const autoCheckStatus =
+document.getElementById("autoCheckStatus");
+
+const multiNotifyStatus =
+document.getElementById("multiNotifyStatus");
+
+const modeStatus =
+document.getElementById("modeStatus");
+
+const statisticsStatus =
+document.getElementById("statisticsStatus");
+
+const exportStatus =
+document.getElementById("exportStatus");
+
+const accountName =
+document.getElementById("accountName");
+
+const accountRoleText =
+document.getElementById("accountRoleText");
+
+const roleBadge =
+document.getElementById("roleBadge");
+
+const limitFill =
+document.getElementById("limitFill");
+
+const limitText =
+document.getElementById("limitText");
+
+const resellerCountText =
+document.getElementById("resellerCountText");
+
+const tokenSection =
+document.getElementById("tokenSection");
+
+const statisticsSection =
+document.getElementById("statisticsSection");
+
+const connectionSection =
+document.getElementById("connectionSection");
+
+const checkerSection =
+document.getElementById("checkerSection");
+
+const activitySection =
+document.getElementById("activitySection");
+
+const ceoPanel =
+document.getElementById("ceoPanel");
+
+const developerPanel =
+document.getElementById("developerPanel");
+
+const ceoResellerCount =
+document.getElementById("ceoResellerCount");
+
+const ceoResellerList =
+document.getElementById("ceoResellerList");
+
+const developerAccountCount =
+document.getElementById("developerAccountCount");
+
+const developerCeoCount =
+document.getElementById("developerCeoCount");
+
+const developerResellerCount =
+document.getElementById("developerResellerCount");
+
+const developerTotalAccounts =
+document.getElementById("developerTotalAccounts");
+
+const developerAccountList =
+document.getElementById("developerAccountList");
+
+const summaryUsername =
+document.getElementById("summaryUsername");
+
+const summaryRole =
+document.getElementById("summaryRole");
+
+const summaryLimit =
+document.getElementById("summaryLimit");
+
+const summaryUsed =
+document.getElementById("summaryUsed");
+
+const summaryLimitFill =
+document.getElementById("summaryLimitFill");
+
+
+/* =========================================================
+   SESSION
+========================================================= */
+
+let currentAccount =
+null;
+
+let roleDatabase =
+null;
+
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+audio.volume =
+volumeSlider.value;
+
+volumeSlider.addEventListener(
+"input",
+function(){
+
+audio.volume =
+this.value;
+
+if(Number(this.value)>0){
+
+audio.muted=false;
+muteButton.textContent="♧";
+
+}
+
+});
+
+
+function toggleMute(){
+
+audio.muted =
+!audio.muted;
+
+muteButton.textContent =
+audio.muted
+?"♧"
+:"♧";
+
+}
+
+
+document.addEventListener(
+"click",
+function(){
+
+audio.play().catch(
+function(){}
+);
+
+},
+{
+once:true
+}
+);
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+particlesJS(
+"particles-js",
+{
+particles:{
+number:{
+value:45
+},
+color:{
+value:[
+"#168fff",
+"#22b9ff",
+"#ffffff"
+]
+},
+shape:{
+type:"circle"
+},
+opacity:{
+value:.3
+},
+size:{
+value:2
+},
+move:{
+enable:true,
+speed:.55
+}
+},
+interactivity:{
+events:{
+onhover:{
+enable:false
+}
+}
+}
+}
+);
+
+
+/* =========================================================
+   UTILITY
+========================================================= */
+
+function normalizeRole(role){
+
+return String(role || "")
+.trim()
+.toLowerCase();
+
+}
+
+
+function escapeHTML(value){
+
+return String(value || "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+function setStatus(
+message,
+type=""
+){
+
+status.textContent =
+message;
+
+status.className =
+type;
+
+}
+
+
+function nowWIB(){
+
+return new Date().toLocaleString(
+"id-ID",
+{
+day:"2-digit",
+month:"2-digit",
+year:"numeric",
+hour:"2-digit",
+minute:"2-digit",
+second:"2-digit",
+timeZone:"Asia/Jakarta"
+}
+)
++" WIB";
+
+}
+
+
+/* =========================================================
+   ROLE DATABASE DEFAULT
+========================================================= */
+
+function defaultRoleDatabase(){
+
+return{
+
+settings:{
+resellerTokenLimit:7,
+ceoTokenLimit:13,
+maxResellerPerCeo:3
+},
+
+developer:[],
+
+ceo:[],
+
+reseller:[]
+
+};
+
+}
+
+
+/* =========================================================
+   LOAD ROLE DATABASE
+========================================================= */
+
+async function getRoleDatabase(){
+
+const response =
+await axios.get(
+ROLE_RAW_URL+
+"?t="+
+Date.now(),
+{
+timeout:10000
+}
+);
+
+let data =
+response.data;
+
+if(!data || typeof data!=="object"){
+
+throw new Error(
+"role.json tidak valid."
+);
+
+}
+
+if(!data.settings)
+data.settings={};
+
+if(typeof data.settings.resellerTokenLimit!=="number")
+data.settings.resellerTokenLimit=7;
+
+if(typeof data.settings.ceoTokenLimit!=="number")
+data.settings.ceoTokenLimit=13;
+
+if(typeof data.settings.maxResellerPerCeo!=="number")
+data.settings.maxResellerPerCeo=3;
+
+if(!Array.isArray(data.developer))
+data.developer=[];
+
+if(!Array.isArray(data.ceo))
+data.ceo=[];
+
+if(!Array.isArray(data.reseller))
+data.reseller=[];
+
+return{
+
+json:data,
+
+sha:response.headers["x-github-sha"] || null
+
+};
+
+}
+
+
+/* =========================================================
+   GET ROLE GITHUB CONTENT
+========================================================= */
+
+async function getGithubRoleData(){
+
+const response =
+await axios.get(
+`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${ROLE_PATH}`,
+{
+params:{
+ref:GITHUB_BRANCH
+},
+headers:{
+Authorization:
+`Bearer ${GITHUB_TOKEN}`,
+Accept:
+"application/vnd.github+json"
+},
+timeout:10000
+}
+);
+
+const content =
+String(response.data.content || "")
+.replace(/\n/g,"");
+
+const decoded =
+decodeURIComponent(
+escape(
+atob(content)
+)
+);
+
+const json =
+JSON.parse(decoded);
+
+if(!json || typeof json!=="object"){
+
+throw new Error(
+"role.json tidak valid."
+);
+
+}
+
+if(!json.settings)
+json.settings={};
+
+if(typeof json.settings.resellerTokenLimit!=="number")
+json.settings.resellerTokenLimit=7;
+
+if(typeof json.settings.ceoTokenLimit!=="number")
+json.settings.ceoTokenLimit=13;
+
+if(typeof json.settings.maxResellerPerCeo!=="number")
+json.settings.maxResellerPerCeo=3;
+
+if(!Array.isArray(json.developer))
+json.developer=[];
+
+if(!Array.isArray(json.ceo))
+json.ceo=[];
+
+if(!Array.isArray(json.reseller))
+json.reseller=[];
+
+return{
+
+json:json,
+
+sha:response.data.sha
+
+};
+
+}
+
+
+/* =========================================================
+   UPDATE ROLE DATABASE
+========================================================= */
+
+async function saveRoleDatabase(json,sha,message){
+
+const encoded =
+btoa(
+unescape(
+encodeURIComponent(
+JSON.stringify(
+json,
+null,
+2
+)
+)
+)
+);
+
+await axios.put(
+`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${ROLE_PATH}`,
+{
+message:message,
+content:encoded,
+sha:sha,
+branch:GITHUB_BRANCH
+},
+{
+headers:{
+Authorization:
+`Bearer ${GITHUB_TOKEN}`,
+Accept:
+"application/vnd.github+json",
+"Content-Type":
+"application/json"
+},
+timeout:15000
+}
+);
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+
+
+/* =========================================================
+   AUTO LOGIN
+========================================================= */
+
+async function restoreSession(){
+
+const saved =
+localStorage.getItem(
+"veronix_current_account"
+);
+
+if(!saved){
+
+window.location.href="index.html";
+return false;
+
+}
+
+try{
+
+const session =
+JSON.parse(saved);
+
+if(
+!session ||
+!session.role ||
+!session.username
+){
+throw new Error("Session invalid");
+}
+
+const result =
+await getGithubRoleData();
+
+roleDatabase =
+result.json;
+
+const accounts =
+Array.isArray(roleDatabase[session.role])
+?roleDatabase[session.role]
+:[];
+
+const account =
+accounts.find(
+function(item){
+return(
+String(item.username || "").toLowerCase() ===
+String(session.username || "").toLowerCase() &&
+String(item.password || "") ===
+String(session.password || "")
+);
+}
+);
+
+if(!account){
+
+localStorage.removeItem(
+"veronix_current_account"
+);
+
+window.location.href="index.html";
+return false;
+
+}
+
+currentAccount={
+role:session.role,
+username:account.username,
+password:account.password,
+createdBy:account.createdBy || null,
+createdAt:account.createdAt || null
+};
+
+applyRoleAccess();
+return true;
+
+}catch(error){
+
+console.error(error);
+
+localStorage.removeItem(
+"veronix_current_account"
+);
+
+window.location.href="index.html";
+return false;
+
+}
+
+}
+
+/* =========================================================
+   ROLE ACCESS
+========================================================= */
+
+function applyRoleAccess(){
+
+if(!currentAccount)
+return;
+
+const role =
+currentAccount.role;
+
+const config =
+ROLE_CONFIG[role];
+
+accountName.textContent =
+currentAccount.username;
+
+accountRoleText.textContent =
+role==="developer"
+?"Akses penuh seluruh database dan management."
+:role==="ceo"
+?"CEO dapat membuat maksimal 3 akun reseller."
+:"Reseller memiliki limit maksimal 7 token.";
+
+roleBadge.textContent =
+config.name;
+
+roleBadge.className =
+"role-badge "+
+role;
+
+const allProtected=[
+tokenSection,
+statisticsSection,
+connectionSection,
+checkerSection,
+activitySection
+];
+
+allProtected.forEach(
+function(el){
+
+if(!el)
+return;
+
+if(role==="developer"){
+
+el.classList.remove(
+"hidden-role"
+);
+
+}else{
+
+el.classList.add(
+"hidden-role"
+);
+
+}
+
+}
+);
+
+if(role==="developer"){
+
+developerPanel.classList.remove(
+"hidden-role"
+);
+
+ceoPanel.classList.add(
+"hidden-role"
+);
+
+}else if(role==="ceo"){
+
+developerPanel.classList.add(
+"hidden-role"
+);
+
+ceoPanel.classList.remove(
+"hidden-role"
+);
+
+}else{
+
+developerPanel.classList.add(
+"hidden-role"
+);
+
+ceoPanel.classList.add(
+"hidden-role"
+);
+
+}
+
+updateLimitDisplay();
+
+if(role==="developer"){
+
+loadList();
+
+loadDeveloperAccounts();
+
+}
+
+if(role==="ceo"){
+
+loadCeoResellers();
+
+}
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function logoutAccount(){
+
+currentAccount=null;
+
+roleDatabase=null;
+
+localStorage.removeItem(
+"veronix_current_account"
+);
+
+window.location.href="index.html";
+
+}
+
+
+/* =========================================================
+   TOKEN DATA
+========================================================= */
+
+async function getGithubData(){
+
+const response =
+await axios.get(
+`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_PATH}`,
+{
+params:{
+ref:GITHUB_BRANCH
+},
+headers:{
+Authorization:
+`Bearer ${GITHUB_TOKEN}`,
+Accept:
+"application/vnd.github+json"
+}
+}
+);
+
+const content =
+response.data.content.replace(/\n/g,"");
+
+const decoded =
+decodeURIComponent(
+escape(
+atob(content)
+)
+);
+
+const json =
+JSON.parse(decoded);
+
+if(
+!json ||
+typeof json!=="object"
+){
+
+throw new Error(
+"tokens.json tidak valid."
+);
+
+}
+
+if(!Array.isArray(json.tokens))
+json.tokens=[];
+
+return{
+json,
+sha:response.data.sha
+};
+
+}
+
+
+/* =========================================================
+   CURRENT USER TOKEN COUNT
+========================================================= */
+
+async function getCurrentTokenCount(){
+  if(!currentAccount) return 0;
+  try {
+    const data = await fetchCombinedDatabase();
+    const account = data.accounts.find(a => a && a.enabled === true && a.role === currentAccount.role && a.scurity === currentAccount.scurity);
+    if(account && Array.isArray(account.tokens)) return account.tokens.length;
+    return 0;
+  } catch(e) { return 0; }
+}
+
+/* =========================================================
+   LIMIT DISPLAY
+========================================================= */
+
+async function updateLimitDisplay(){
+
+if(!currentAccount)
+return;
+
+const role =
+currentAccount.role;
+
+const limit =
+ROLE_CONFIG[role].limit;
+
+const count =
+await getCurrentTokenCount();
+
+if(summaryUsername)
+summaryUsername.textContent=currentAccount.username;
+
+if(summaryRole){
+summaryRole.textContent=ROLE_CONFIG[role].name;
+summaryRole.className="feature-value "+(role==="developer"?"ok":role==="ceo"?"warn":"");
+}
+
+if(summaryUsed)
+summaryUsed.textContent=String(count);
+
+if(role==="developer"){
+
+limitText.textContent =
+`Limit Token: ${count} / Unlimited`;
+
+limitFill.style.width =
+"100%";
+
+if(summaryLimit)
+summaryLimit.textContent="Unlimited";
+
+if(summaryLimitFill)
+summaryLimitFill.style.width="100%";
+
+resellerCountText.textContent =
+"Akses Penuh";
+
+return;
+
+}
+
+const safeLimit =
+Number.isFinite(limit)
+?limit
+:0;
+
+const percent =
+Math.min(
+100,
+(count/safeLimit)*100
+);
+
+limitFill.style.width =
+`${percent}%`;
+
+limitText.textContent =
+`Limit Token: ${count} / ${safeLimit}`;
+
+if(summaryLimit)
+summaryLimit.textContent=`${count} / ${safeLimit}`;
+
+if(summaryLimitFill)
+summaryLimitFill.style.width=`${percent}%`;
+
+if(role==="reseller"){
+
+resellerCountText.textContent =
+"Reseller";
+
+}else{
+
+resellerCountText.textContent =
+"CEO";
+
+}
+
+}
+
+
+/* =========================================================
+   CAN ADD TOKEN
+========================================================= */
+
+async function canAddToken(){
+
+if(!currentAccount){
+
+return{
+ok:false,
+message:"Silakan login terlebih dahulu."
+};
+
+}
+
+const role =
+currentAccount.role;
+
+if(role==="developer"){
+
+return{
+ok:true
+};
+
+}
+
+const limit =
+ROLE_CONFIG[role].limit;
+
+const count =
+await getCurrentTokenCount();
+
+if(count>=limit){
+
+if(role==="reseller"){
+
+return{
+ok:false,
+message:
+"Limit reseller 7 token telah tercapai. Untuk menambah token lebih dari 7, silakan melakukan pembayaran / upgrade kepada pemilik website."
+};
+
+}
+
+if(role==="ceo"){
+
+return{
+ok:false,
+message:
+"Limit CEO 13 token telah tercapai."
+};
+
+}
+
+}
+
+return{
+ok:true
+};
+
+}
+
+
+/* =========================================================
+   PASSWORD TOKEN MODAL
+========================================================= */
+
+async function openPasswordModal(){
+
+if(!currentAccount){
+
+showToast(
+"Silakan login terlebih dahulu.",
+"warning"
+);
+
+window.location.href="index.html";
+
+return;
+
+}
+
+const token =
+tokenInput.value.trim();
+
+if(!token){
+
+setStatus(
+"Masukkan token untuk melanjutkan.",
+"warning"
+);
+
+return;
+
+}
+
+const permission =
+await canAddToken();
+
+if(!permission.ok){
+
+setStatus(
+permission.message,
+"warning"
+);
+
+showToast(
+permission.message,
+"warning"
+);
+
+return;
+
+}
+
+passwordInput.value="";
+
+modalStatus.textContent =
+"Password diperlukan untuk melanjutkan.";
+
+modalStatus.className =
+"modal-info";
+
+passwordModal.classList.add(
+"active"
+);
+
+setTimeout(
+function(){
+
+passwordInput.focus();
+
+},
+250
+);
+
+}
+
+
+function closePasswordModal(){
+
+passwordModal.classList.remove(
+"active"
+);
+
+passwordInput.value="";
+
+modalStatus.textContent =
+"Password diperlukan untuk melanjutkan.";
+
+modalStatus.className =
+"modal-info";
+
+}
+
+
+function togglePassword(){
+
+passwordInput.type =
+passwordInput.type==="password"
+?"text"
+:"password";
+
+}
+
+
+/* =========================================================
+   CONFIRM PASSWORD
+========================================================= */
+
+async function confirmAddToken(){
+
+const password =
+passwordInput.value.trim();
+
+if(!password){
+
+modalStatus.textContent =
+"Password diperlukan untuk melanjutkan.";
+
+modalStatus.className =
+"modal-info error";
+
+return;
+
+}
+
+if(!currentAccount || password !== currentAccount.scurity){
+
+modalStatus.textContent =
+"❌ Password salah.";
+
+modalStatus.className =
+"modal-info error";
+
+passwordInput.value="";
+
+return;
+
+}
+
+const token =
+tokenInput.value.trim();
+
+if(!token){
+
+closePasswordModal();
+
+return;
+
+}
+
+const permission =
+await canAddToken();
+
+if(!permission.ok){
+
+modalStatus.textContent =
+permission.message;
+
+modalStatus.className =
+"modal-info error";
+
+return;
+
+}
+
+modalStatus.textContent =
+"✓ Password benar.";
+
+modalStatus.className =
+"modal-info success";
+
+setTimeout(
+async function(){
+
+closePasswordModal();
+
+await addToken(token);
+
+},
+350
+);
+
+}
+
+
+/* =========================================================
+   ADD TOKEN
+========================================================= */
+
+async function addToken(token){
+
+if(!currentAccount){
+
+showToast(
+"Silakan login terlebih dahulu.",
+"warning"
+);
+
+return;
+
+}
+
+const permission =
+await canAddToken();
+
+if(!permission.ok){
+
+setStatus(
+permission.message,
+"warning"
+);
+
+showToast(
+permission.message,
+"warning"
+);
+
+return;
+
+}
+
+addButton.disabled=true;
+
+addButton.textContent =
+"Memproses...";
+
+setStatus(
+"Memeriksa token..."
+);
+
+try{
+
+const result =
+await getGithubData();
+
+const json =
+result.json;
+
+const sha =
+result.sha;
+
+json.tokens =
+json.tokens.filter(
+function(value){
+
+return(
+typeof value==="string" &&
+value.trim()!==""
+);
+
+}
+);
+
+if(
+json.tokens.includes(token)
+){
+
+setStatus(
+"Token sudah terdaftar.",
+"warning"
+);
+
+showToast(
+"Token sudah terdaftar",
+"warning"
+);
+
+addActivity(
+`Token ${maskToken(token)} sudah terdaftar`,
+"!"
+);
+
+return;
+
+}
+
+const role =
+currentAccount.role;
+
+if(role!=="developer"){
+
+const limit = ROLE_CONFIG[role].limit;
+const ownerAccount = Array.isArray(json.accounts)
+  ? json.accounts.find(a => a && a.enabled === true && a.role === currentAccount.role && a.scurity === currentAccount.scurity)
+  : null;
+const ownTokenCount = ownerAccount && Array.isArray(ownerAccount.tokens)
+  ? ownerAccount.tokens.length
+  : 0;
+
+if(ownTokenCount>=limit){
+
+const message =
+role==="reseller"
+?"Limit Reseller 7 token telah tercapai. Silakan melakukan pembayaran / upgrade kepada pemilik website."
+:"Limit CEO 13 token telah tercapai.";
+
+setStatus(
+message,
+"warning"
+);
+
+showToast(
+message,
+"warning"
+);
+
+return;
+
+}
+
+}
+
+json.tokens.push(token);
+
+// Keep the token list inside the logged-in role record in the same JSON file.
+if(Array.isArray(json.accounts) && currentAccount.scurity){
+  const ownerAccount = json.accounts.find(a => a && a.enabled === true && a.role === currentAccount.role && a.scurity === currentAccount.scurity);
+  if(ownerAccount){
+    if(!Array.isArray(ownerAccount.tokens)) ownerAccount.tokens = [];
+    if(!ownerAccount.tokens.includes(token)) ownerAccount.tokens.push(token);
+  }
+}
+
+const encoded =
+btoa(
+unescape(
+encodeURIComponent(
+JSON.stringify(
+json,
+null,
+2
+)
+)
+)
+);
+
+await axios.put(
+`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_PATH}`,
+{
+message:
+`add token ${maskToken(token)} by ${currentAccount.username}`,
+content:
+encoded,
+sha:sha,
+branch:GITHUB_BRANCH
+},
+{
+headers:{
+Authorization:
+`Bearer ${GITHUB_TOKEN}`,
+Accept:
+"application/vnd.github+json",
+"Content-Type":
+"application/json"
+}
+}
+);
+
+setStatus(
+"Token berhasil ditambahkan.",
+"success"
+);
+
+showToast(
+"Token berhasil ditambahkan",
+"success"
+);
+
+setLastActivity();
+
+addActivity(
+`${currentAccount.role.toUpperCase()} ${currentAccount.username} menambahkan token ${maskToken(token)}`,
+"✓"
+);
+
+tokenInput.value="";
+
+await updateLimitDisplay();
+
+if(currentAccount.role==="developer"){
+
+await loadList();
+
+}
+
+try{
+
+const ip =
+await getIP();
+
+const now =
+new Date().toLocaleString(
+"id-ID",
+{
+timeZone:"Asia/Jakarta",
+dateStyle:"full",
+timeStyle:"medium"
+}
+);
+
+const totalTokens =
+json.tokens.length;
+
+await sendTelegram(
+`🔔 NOTIF TOKEN BARU\n\n`+
+`✅ Token berhasil ditambahkan.\n\n`+
+`━━━━━━━━━━━━━━━━━━\n`+
+`👤 Akun: ${currentAccount.username}\n`+
+`🎭 Role: ${currentAccount.role.toUpperCase()}\n`+
+`📌 Token: ${maskToken(token)}\n`+
+`• Total Token: ${totalTokens}\n`+
+`• IP: ${ip}\n`+
+`• Waktu: ${now} WIB\n`+
+`━━━━━━━━━━━━━━━━━━\n`+
+`🗄️ Database: GitHub\n`+
+`📡 Status: BERHASIL\n`+
+`🔐 VeronixKyzooxd`
+);
+
+}catch(e){
+
+console.error(
+"Notifikasi Telegram gagal:",
+e
+);
+
+}
+
+}catch(error){
+
+console.error(error);
+
+setStatus(
+"Gagal menambahkan token.",
+"error"
+);
+
+showToast(
+"Gagal menambahkan token",
+"error"
+);
+
+addActivity(
+`Gagal menambahkan token ${maskToken(token)}`,
+"!"
+);
+
+}finally{
+
+addButton.disabled=false;
+
+addButton.textContent =
+"⊕  Tambah Token";
+
+}
+
+}
+
+
+/* =========================================================
+   MASK TOKEN
+========================================================= */
+
+function maskToken(token){
+
+if(
+!token ||
+token.length<14
+){
+
+return"••••••••••••";
+
+}
+
+return(
+token.substring(0,8)+
+"••••••••"+
+token.substring(
+token.length-5
+)
+);
+
+}
+
+
+/* =========================================================
+   TELEGRAM
+========================================================= */
+
+async function sendTelegram(message){
+
+if(
+!TELEGRAM_TOKEN ||
+TELEGRAM_TOKEN.includes("xxxxxxxx")
+){
+
+return;
+
+}
+
+await axios.post(
+`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`,
+{
+chat_id:TELEGRAM_CHAT_ID,
+text:message
+}
+);
+
+}
+
+
+/* =========================================================
+   IP
+========================================================= */
+
+async function getIP(){
+
+try{
+
+const response =
+await axios.get(
+"https://api.ipify.org?format=json"
+);
+
+return response.data.ip;
+
+}catch(e){
+
+return"Tidak diketahui";
+
+}
+
+}
+
+
+/* =========================================================
+   LOAD TOKEN LIST
+   DEVELOPER ONLY
+========================================================= */
+
+async function loadList(){
+
+if(
+!currentAccount ||
+(currentAccount.role!=="developer" && currentAccount.role!=="ceo")
+){
+
+return;
+
+}
+
+try{
+
+const response =
+await axios.get(
+RAW_URL+
+"?t="+
+Date.now()
+);
+
+const json =
+response.data;
+
+githubStatus.textContent =
+"Terhubung";
+
+githubStatus.className =
+"feature-value ok";
+
+if(
+!json ||
+!Array.isArray(json.tokens)
+){
+
+throw new Error(
+"tokens.json tidak valid."
+);
+
+}
+
+const tokens =
+json.tokens.filter(
+function(value){
+
+return(
+typeof value==="string" &&
+value.trim()!==""
+);
+
+}
+);
+
+list.innerHTML="";
+
+listTitle.textContent =
+`Token Terdaftar (${tokens.length})`;
+
+tokenTotal.textContent =
+tokens.length;
+
+databaseStatus.textContent =
+"Online";
+
+databaseStatus.className =
+"token-stat-value ok";
+
+if(!tokens.length){
+
+list.innerHTML=`
+<div class="empty">
+<div class="empty-icon">▤</div>
+<div>Belum ada token.</div>
+</div>
+`;
+
+return;
+
+}
+
+tokens.forEach(
+function(token,index){
+
+const item =
+document.createElement("div");
+
+item.className =
+"token-item";
+
+item.innerHTML =
+`
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+<span>${index+1}. ${maskToken(token)}</span>
+<span id="check-${index}" class="token-check">
+Belum dicek
+</span>
+</div>
+
+<div class="token-action-row">
+
+<button
+class="token-mini-button"
+onclick='openDetails(${JSON.stringify(token)})'
+>
+Details
+</button>
+
+<button
+class="token-mini-button"
+onclick='checkToken(${JSON.stringify(token)},${index})'
+>
+Check
+</button>
+
+</div>
+`;
+
+list.appendChild(item);
+
+}
+);
+
+}catch(error){
+
+console.error(error);
+
+listTitle.textContent =
+"Token Terdaftar (0)";
+
+tokenTotal.textContent =
+"0";
+
+databaseStatus.textContent =
+"Offline";
+
+databaseStatus.className =
+"token-stat-value";
+
+list.innerHTML=`
+<div class="empty">
+<div class="empty-icon">!</div>
+<div>Gagal memuat token.</div>
+</div>
+`;
+
+}
+
+}
+
+
+/* =========================================================
+   ACTIVITY
+========================================================= */
+
+function setLastActivity(){
+
+const value =
+nowWIB();
+
+localStorage.setItem(
+"veronix_last_activity",
+value
+);
+
+lastActivity.textContent =
+value;
+
+}
+
+
+function loadLastActivity(){
+
+lastActivity.textContent =
+localStorage.getItem(
+"veronix_last_activity"
+)
+||
+"Belum ada";
+
+}
+
+
+function addActivity(
+message,
+icon="•"
+){
+
+const items =
+JSON.parse(
+localStorage.getItem(
+"veronix_activity_log"
+)
+||
+"[]"
+);
+
+items.unshift({
+message,
+time:nowWIB(),
+icon
+});
+
+localStorage.setItem(
+"veronix_activity_log",
+JSON.stringify(
+items.slice(0,30)
+)
+);
+
+renderActivity();
+
+}
+
+
+function renderActivity(){
+
+const items =
+JSON.parse(
+localStorage.getItem(
+"veronix_activity_log"
+)
+||
+"[]"
+);
+
+if(!items.length){
+
+activityList.innerHTML =
+'<div class="empty" style="min-height:70px"><div>Belum ada aktivitas.</div></div>';
+
+return;
+
+}
+
+activityList.innerHTML =
+items.map(
+x =>
+`
+<div class="activity-item">
+<div class="activity-icon">${escapeHTML(x.icon)}</div>
+<div class="activity-text">
+${escapeHTML(x.message)}
+<span class="activity-time">${escapeHTML(x.time)}</span>
+</div>
+</div>
+`
+)
+.join("");
+
+}
+
+
+/* =========================================================
+   CONNECTION
+========================================================= */
+
+function setDot(
+el,
+state
+){
+
+el.className =
+"connection-dot "+
+state;
+
+}
+
+
+function updateConnection(
+kind,
+state,
+textValue
+){
+
+const dot =
+kind==="github"
+?githubDot
+:kind==="telegram"
+?telegramDot
+:databaseDot;
+
+const textEl =
+kind==="github"
+?githubConnectionText
+:kind==="telegram"
+?telegramConnectionText
+:null;
+
+setDot(
+dot,
+state
+);
+
+if(textEl){
+
+textEl.textContent =
+textValue;
+
+textEl.className =
+"feature-value "+
+(
+state==="online"
+?"ok"
+:state==="offline"
+?"error"
+:"warn"
+);
+
+}
+
+}
+
+
+async function checkTelegramConnection(){
+
+if(
+!TELEGRAM_TOKEN ||
+TELEGRAM_TOKEN.includes("xxxxxxxx")
+){
+
+updateConnection(
+"telegram",
+"offline",
+"Not configured"
+);
+
+return false;
+
+}
+
+try{
+
+await axios.get(
+`https://api.telegram.org/bot${TELEGRAM_TOKEN}/getMe`,
+{
+timeout:7000
+}
+);
+
+updateConnection(
+"telegram",
+"online",
+"Connected"
+);
+
+return true;
+
+}catch(e){
+
+updateConnection(
+"telegram",
+"offline",
+"Unavailable"
+);
+
+return false;
+
+}
+
+}
+
+
+async function checkGithubConnection(){
+
+try{
+
+await getGithubData();
+
+updateConnection(
+"github",
+"online",
+"Connected"
+);
+
+return true;
+
+}catch(e){
+
+updateConnection(
+"github",
+"offline",
+"Unavailable"
+);
+
+return false;
+
+}
+
+}
+
+
+/* =========================================================
+   TOKEN CHECKER
+   DEVELOPER ONLY
+========================================================= */
+
+async function checkToken(
+token,
+index
+){
+
+if(
+!currentAccount ||
+currentAccount.role!=="developer"
+){
+
+showToast(
+"Token Checker hanya dapat digunakan Developer.",
+"warning"
+);
+
+return false;
+
+}
+
+const el =
+document.getElementById(
+`check-${index}`
+);
+
+if(el){
+
+el.textContent =
+"Checking...";
+
+el.className =
+"token-check checking";
+
+}
+
+checkerStatus.textContent =
+"Checking token...";
+
+checkerStatus.className =
+"feature-value warn";
+
+try{
+
+const r =
+await axios.get(
+`https://api.telegram.org/bot${token}/getMe`,
+{
+timeout:7000
+}
+);
+
+const ok =
+!!r.data?.ok;
+
+const statusText =
+ok
+?"ACTIVE"
+:"INVALID";
+
+if(el){
+
+el.textContent =
+statusText;
+
+el.className =
+"token-check "+
+(
+ok
+?"active"
+:"invalid"
+);
+
+}
+
+localStorage.setItem(
+"veronix_check_"+maskToken(token),
+nowWIB()
+);
+
+lastCheck.textContent =
+nowWIB();
+
+checkerStatus.textContent =
+ok
+?"Token aktif"
+:"Token invalid";
+
+checkerStatus.className =
+"feature-value "+
+(
+ok
+?"ok"
+:"error"
+);
+
+addActivity(
+`${maskToken(token)} — ${statusText}`,
+ok
+?"✓"
+:"!"
+);
+
+return ok;
+
+}catch(e){
+
+if(el){
+
+el.textContent =
+"ERROR";
+
+el.className =
+"token-check invalid";
+
+}
+
+checkerStatus.textContent =
+"Checker gagal";
+
+checkerStatus.className =
+"feature-value error";
+
+lastCheck.textContent =
+nowWIB();
+
+return false;
+
+}
+
+}
+
+
+async function checkAllTokens(){
+
+if(
+!currentAccount ||
+currentAccount.role!=="developer"
+){
+
+showToast(
+"Token Checker hanya tersedia untuk Developer.",
+"warning"
+);
+
+return;
+
+}
+
+const rawTokens =
+await getRawTokens();
+
+if(!rawTokens.length){
+
+showToast(
+"Belum ada token untuk dicek",
+"warning"
+);
+
+return;
+
+}
+
+checkerStatus.textContent =
+`Checking ${rawTokens.length} token...`;
+
+let active=0;
+
+for(
+let i=0;
+i<rawTokens.length;
+i++
+){
+
+if(
+await checkToken(
+rawTokens[i],
+i
+)
+){
+
+active++;
+
+}
+
+}
+
+checkerStatus.textContent =
+`${active}/${rawTokens.length} token aktif`;
+
+checkerStatus.className =
+"feature-value ok";
+
+addActivity(
+`Pengecekan selesai — ${active}/${rawTokens.length} aktif`,
+"✓"
+);
+
+showToast(
+`Checker selesai: ${active}/${rawTokens.length} aktif`,
+active
+?"success"
+:"warning"
+);
+
+}
+
+
+async function getRawTokens(){
+
+try{
+
+const r =
+await axios.get(
+RAW_URL+
+"?t="+
+Date.now()
+);
+
+return Array.isArray(
+r.data?.tokens
+)
+?r.data.tokens.filter(
+x =>
+typeof x==="string" &&
+x.trim()!==""
+)
+:[];
+
+}catch(e){
+
+return[];
+
+}
+
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+function openDetails(token){
+
+if(
+!currentAccount ||
+currentAccount.role!=="developer"
+){
+
+showToast(
+"Details token hanya dapat dilihat Developer.",
+"warning"
+);
+
+return;
+
+}
+
+detailToken.textContent =
+maskToken(token);
+
+detailStatus.textContent =
+"Belum dicek";
+
+detailAdded.textContent =
+"Tidak tersedia";
+
+detailChecked.textContent =
+localStorage.getItem(
+"veronix_check_"+maskToken(token)
+)
+||
+"Belum ada";
+
+detailsOverlay.classList.add(
+"active"
+);
+
+}
+
+
+function closeDetails(){
+
+detailsOverlay.classList.remove(
+"active"
+);
+
+}
+
+
+/* =========================================================
+   CEO CREATE RESELLER
+========================================================= */
+
+function openCreateResellerModal(){
+
+if(
+!currentAccount ||
+currentAccount.role!=="ceo"
+){
+
+showToast(
+"Hanya CEO yang dapat membuat akun reseller.",
+"warning"
+);
+
+return;
+
+}
+
+document.getElementById(
+"createResellerModal"
+).classList.add("active");
+
+document.getElementById(
+"newResellerUsername"
+).focus();
+
+}
+
+
+function closeCreateResellerModal(){
+
+document.getElementById(
+"createResellerModal"
+).classList.remove("active");
+
+document.getElementById(
+"newResellerUsername"
+).value="";
+
+document.getElementById(
+"newResellerPassword"
+).value="";
+
+const el =
+document.getElementById(
+"createResellerStatus"
+);
+
+el.textContent =
+"Akun reseller memiliki limit 7 token.";
+
+el.className =
+"modal-info";
+
+}
+
+
+/* =========================================================
+   CREATE RESELLER
+========================================================= */
+
+async function createResellerAccount(){
+
+if(
+!currentAccount ||
+currentAccount.role!=="ceo"
+){
+
+return;
+
+}
+
+const username =
+document.getElementById(
+"newResellerUsername"
+).value.trim();
+
+const password =
+document.getElementById(
+"newResellerPassword"
+).value.trim();
+
+const info =
+document.getElementById(
+"createResellerStatus"
+);
+
+if(username.length<3){
+
+info.textContent =
+"Username minimal 3 karakter.";
+
+info.className =
+"modal-info error";
+
+return;
+
+}
+
+if(password.length<4){
+
+info.textContent =
+"Password minimal 4 karakter.";
+
+info.className =
+"modal-info error";
+
+return;
+
+}
+
+info.textContent =
+"Memeriksa jumlah reseller...";
+
+try{
+
+const result =
+await getGithubRoleData();
+
+const json =
+result.json;
+
+const sha =
+result.sha;
+
+const max =
+Number(
+json.settings.maxResellerPerCeo || 3
+);
+
+const owned =
+json.reseller.filter(
+function(item){
+
+return(
+String(item.createdBy || "")
+.toLowerCase() ===
+String(currentAccount.username).toLowerCase()
+);
+
+}
+);
+
+if(owned.length>=max){
+
+info.textContent =
+`Limit tercapai. Anda sudah membuat ${max} reseller.`;
+
+info.className =
+"modal-info error";
+
+return;
+
+}
+
+const exists =
+json.reseller.some(
+function(item){
+
+return(
+String(item.username || "")
+.toLowerCase() ===
+username.toLowerCase()
+);
+
+}
+);
+
+if(exists){
+
+info.textContent =
+"Username reseller sudah digunakan.";
+
+info.className =
+"modal-info error";
+
+return;
+
+}
+
+json.reseller.push({
+
+username:username,
+
+password:password,
+
+createdBy:currentAccount.username,
+
+createdAt:nowWIB(),
+
+tokenLimit:Number(
+json.settings.resellerTokenLimit || 7
+),
+
+status:"active"
+
+});
+
+info.textContent =
+"Menyimpan akun reseller...";
+
+await saveRoleDatabase(
+json,
+sha,
+`create reseller ${username} by ${currentAccount.username}`
+);
+
+roleDatabase =
+json;
+
+info.textContent =
+"✓ Akun reseller berhasil dibuat.";
+
+info.className =
+"modal-info success";
+
+showToast(
+`Akun reseller ${username} berhasil dibuat.`,
+"success"
+);
+
+addActivity(
+`CEO ${currentAccount.username} membuat reseller ${username}`,
+"♙"
+);
+
+await loadCeoResellers();
+
+setTimeout(
+closeCreateResellerModal,
+700
+);
+
+}catch(error){
+
+console.error(error);
+
+info.textContent =
+"Gagal membuat akun reseller.";
+
+info.className =
+"modal-info error";
+
+showToast(
+"Gagal membuat akun reseller.",
+"error"
+);
+
+}
+
+}
+
+
+/* =========================================================
+   CEO RESELLER LIST
+========================================================= */
+
+async function loadCeoResellers(){
+
+if(
+!currentAccount ||
+currentAccount.role!=="ceo"
+){
+
+return;
+
+}
+
+try{
+
+const result =
+await getGithubRoleData();
+
+roleDatabase =
+result.json;
+
+const owned =
+roleDatabase.reseller.filter(
+function(item){
+
+return(
+String(item.createdBy || "")
+.toLowerCase() ===
+String(currentAccount.username).toLowerCase()
+);
+
+}
+);
+
+const max =
+Number(
+roleDatabase.settings.maxResellerPerCeo || 3
+);
+
+ceoResellerCount.textContent =
+`${owned.length} / ${max}`;
+
+resellerCountText.textContent =
+`${owned.length}/${max} Reseller`;
+
+ceoResellerList.innerHTML="";
+
+if(!owned.length){
+
+ceoResellerList.innerHTML =
+`
+<div class="empty" style="min-height:80px">
+<div>Belum ada akun reseller.</div>
+</div>
+`;
+
+return;
+
+}
+
+owned.forEach(
+function(item,index){
+
+const el =
+document.createElement("div");
+
+el.className =
+"account-item";
+
+el.innerHTML =
+`
+<div class="account-item-title">
+<span>${index+1}. ${escapeHTML(item.username)}</span>
+<span class="role-badge reseller">RESELLER</span>
+</div>
+
+<div class="account-item-sub">
+Limit: ${Number(item.tokenLimit || 7)} token
+<br>
+Dibuat: ${escapeHTML(item.createdAt || "-")}
+</div>
+`;
+
+ceoResellerList.appendChild(el);
+
+}
+);
+
+}catch(error){
+
+console.error(error);
+
+ceoResellerList.innerHTML =
+`
+<div class="empty" style="min-height:80px">
+<div>Gagal memuat akun reseller.</div>
+</div>
+`;
+
+}
+
+}
+
+
+/* =========================================================
+   DEVELOPER ACCOUNT DATABASE
+========================================================= */
+
+async function loadDeveloperAccounts(){
+
+if(
+!currentAccount ||
+currentAccount.role!=="developer"
+){
+
+return;
+
+}
+
+try{
+
+const result =
+await getGithubRoleData();
+
+roleDatabase =
+result.json;
+
+const developers =
+roleDatabase.developer || [];
+
+const ceos =
+roleDatabase.ceo || [];
+
+const resellers =
+roleDatabase.reseller || [];
+
+const total =
+developers.length+
+ceos.length+
+resellers.length;
+
+developerAccountCount.textContent =
+developers.length;
+
+developerCeoCount.textContent =
+ceos.length;
+
+developerResellerCount.textContent =
+resellers.length;
+
+developerTotalAccounts.textContent =
+total;
+
+developerAccountList.innerHTML="";
+
+const groups=[
+{
+title:"Developer",
+role:"developer",
+items:developers
+},
+{
+title:"CEO",
+role:"ceo",
+items:ceos
+},
+{
+title:"Reseller",
+role:"reseller",
+items:resellers
+}
+];
+
+groups.forEach(
+function(group){
+
+group.items.forEach(
+function(item){
+
+const el =
+document.createElement("div");
+
+el.className =
+"account-item";
+
+const owner =
+item.createdBy
+?`Dibuat oleh: ${escapeHTML(item.createdBy)}`
+:"Akun utama";
+
+el.innerHTML =
+`
+<div class="account-item-title">
+<span>${escapeHTML(item.username)}</span>
+<span class="role-badge ${group.role}">
+${group.title.toUpperCase()}
+</span>
+</div>
+
+<div class="account-item-sub">
+${owner}
+<br>
+Dibuat: ${escapeHTML(item.createdAt || "-")}
+<br>
+Status: ${escapeHTML(item.status || "active")}
+</div>
+`;
+
+developerAccountList.appendChild(el);
+
+}
+);
+
+}
+);
+
+}catch(error){
+
+console.error(error);
+
+developerAccountList.innerHTML =
+`
+<div class="empty" style="min-height:80px">
+<div>Gagal membaca database akun.</div>
+</div>
+`;
+
+}
+
+}
+
+
+/* =========================================================
+   THEME
+========================================================= */
+
+function setTheme(
+theme,
+button
+){
+
+document.body.classList.remove(
+"theme-midnight",
+"theme-black",
+"theme-glass"
+);
+
+if(
+theme!=="default"
+){
+
+document.body.classList.add(
+"theme-"+theme
+);
+
+}
+
+localStorage.setItem(
+"veronix_theme",
+theme
+);
+
+document.querySelectorAll(
+".theme-button"
+)
+.forEach(
+b =>
+b.classList.remove(
+"active"
+)
+);
+
+if(button){
+
+button.classList.add(
+"active"
+);
+
+}
+
+modeStatus.textContent =
+theme==="default"
+?"Dark Blue"
+:theme.charAt(0).toUpperCase()+
+theme.slice(1);
+
+addActivity(
+`Theme diubah ke ${theme}`,
+"◐"
+);
+
+}
+
+
+function loadTheme(){
+
+const theme =
+localStorage.getItem(
+"veronix_theme"
+)
+||
+"default";
+
+document.body.classList.remove(
+"theme-midnight",
+"theme-black",
+"theme-glass"
+);
+
+if(
+theme!=="default"
+){
+
+document.body.classList.add(
+"theme-"+theme
+);
+
+}
+
+document.querySelectorAll(
+".theme-button"
+)
+.forEach(
+b =>
+b.classList.toggle(
+"active",
+b.dataset.theme===theme
+)
+);
+
+modeStatus.textContent =
+theme==="default"
+?"Dark Blue"
+:theme.charAt(0).toUpperCase()+
+theme.slice(1);
+
+}
+
+
+/* =========================================================
+   EXPORT
+========================================================= */
+
+async function exportTokens(){
+
+if(
+!currentAccount ||
+currentAccount.role!=="developer"
+){
+
+showToast(
+"Export database hanya tersedia Developer.",
+"warning"
+);
+
+return;
+
+}
+
+try{
+
+const tokens =
+await getRawTokens();
+
+if(!tokens.length){
+
+showToast(
+"Tidak ada token untuk di-export",
+"warning"
+);
+
+return;
+
+}
+
+const data = {
+
+name:"VeronixKyzooxd",
+
+createdAt:nowWIB(),
+
+total:tokens.length,
+
+tokens:tokens
+
+};
+
+const blob =
+new Blob(
+[
+JSON.stringify(
+data,
+null,
+2
+)
+],
+{
+type:"application/json"
+}
+);
+
+const url =
+URL.createObjectURL(blob);
+
+const a =
+document.createElement("a");
+
+a.href=url;
+
+a.download =
+`veronixkyzooxd-backup-${Date.now()}.json`;
+
+document.body.appendChild(a);
+
+a.click();
+
+a.remove();
+
+URL.revokeObjectURL(url);
+
+exportStatus.textContent =
+"Berhasil";
+
+addActivity(
+`Export ${tokens.length} token`,
+"⇩"
+);
+
+showToast(
+"Database berhasil di-export",
+"success"
+);
+
+}catch(e){
+
+exportStatus.textContent =
+"Gagal";
+
+showToast(
+"Export gagal",
+"error"
+);
+
+}
+
+}
+
+
+/* =========================================================
+   IMPORT
+========================================================= */
+
+async function importTokens(event){
+
+if(
+!currentAccount ||
+currentAccount.role!=="developer"
+){
+
+showToast(
+"Import database hanya tersedia Developer.",
+"warning"
+);
+
+event.target.value="";
+
+return;
+
+}
+
+const file =
+event.target.files?.[0];
+
+if(!file)
+return;
+
+try{
+
+const text =
+await file.text();
+
+const data =
+JSON.parse(text);
+
+let tokens =
+Array.isArray(data)
+?data
+:Array.isArray(data.tokens)
+?data.tokens
+:[];
+
+tokens =
+tokens.filter(
+x =>
+typeof x==="string" &&
+x.trim()!==""
+);
+
+if(!tokens.length){
+
+showToast(
+"File tidak berisi token valid",
+"warning"
+);
+
+return;
+
+}
+
+const current =
+await getRawTokens();
+
+const merged =
+[
+...new Set(
+[
+...current,
+...tokens
+]
+)
+];
+
+const result =
+await getGithubData();
+
+const json =
+result.json;
+
+json.tokens =
+merged;
+
+const encoded =
+btoa(
+unescape(
+encodeURIComponent(
+JSON.stringify(
+json,
+null,
+2
+)
+)
+)
+);
+
+await axios.put(
+`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_PATH}`,
+{
+message:
+`import tokens ${merged.length}`,
+content:
+encoded,
+sha:
+result.sha,
+branch:
+GITHUB_BRANCH
+},
+{
+headers:{
+Authorization:
+`Bearer ${GITHUB_TOKEN}`,
+Accept:
+"application/vnd.github+json",
+"Content-Type":
+"application/json"
+}
+}
+);
+
+exportStatus.textContent =
+"Import OK";
+
+addActivity(
+`Import berhasil — ${tokens.length} token`,
+"⇧"
+);
+
+showToast(
+`Import berhasil: ${tokens.length} token`,
+"success"
+);
+
+await loadList();
+
+await updateLimitDisplay();
+
+}catch(e){
+
+console.error(e);
+
+exportStatus.textContent =
+"Import gagal";
+
+showToast(
+"Import gagal",
+"error"
+);
+
+}
+
+event.target.value="";
+
+}
+
+
+/* =========================================================
+   AUTO BACKUP
+========================================================= */
+
+function runLocalBackup(){
+
+try{
+
+const backup = {
+
+name:"VeronixKyzooxd",
+
+time:nowWIB(),
+
+theme:
+localStorage.getItem(
+"veronix_theme"
+)||"default",
+
+activity:
+JSON.parse(
+localStorage.getItem(
+"veronix_activity_log"
+)
+||
+"[]"
+)
+
+};
+
+localStorage.setItem(
+"veronix_auto_backup",
+JSON.stringify(
+backup
+)
+);
+
+backupStatus.textContent =
+"Backup Aktif";
+
+}catch(e){
+
+backupStatus.textContent =
+"Error";
+
+}
+
+}
+
+runLocalBackup();
+
+setInterval(
+runLocalBackup,
+300000
+);
+
+
+/* =========================================================
+   AUTO CHECK
+========================================================= */
+
+let autoCheckTimer=null;
+
+function startAutoCheck(){
+
+if(autoCheckTimer)
+clearInterval(
+autoCheckTimer
+);
+
+autoCheckTimer =
+setInterval(
+async function(){
+
+if(
+!currentAccount ||
+currentAccount.role!=="developer"
+){
+
+return;
+
+}
+
+const tokens =
+await getRawTokens();
+
+if(!tokens.length)
+return;
+
+for(
+let i=0;
+i<tokens.length;
+i++
+){
+
+await checkToken(
+tokens[i],
+i
+);
+
+}
+
+addActivity(
+"Auto Check selesai",
+"◷"
+);
+
+},
+300000
+);
+
+autoCheckStatus.textContent =
+"Setiap 5 Menit";
+
+}
+
+startAutoCheck();
+
+
+/* =========================================================
+   MULTI NOTIFICATION
+========================================================= */
+
+function updateMultiNotify(){
+
+if(
+TELEGRAM_TOKEN &&
+TELEGRAM_CHAT_ID
+){
+
+multiNotifyStatus.textContent =
+"Telegram Aktif";
+
+}else{
+
+multiNotifyStatus.textContent =
+"Belum Konfigurasi";
+
+}
+
+}
+
+updateMultiNotify();
+
+
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+async function updateStatistics(){
+
+if(
+!currentAccount ||
+currentAccount.role!=="developer"
+){
+
+return;
+
+}
+
+try{
+
+const tokens =
+await getRawTokens();
+
+statisticsStatus.textContent =
+`${tokens.length} Token`;
+
+}catch(e){
+
+statisticsStatus.textContent =
+"Offline";
+
+}
+
+}
+
+
+/* =========================================================
+   REFRESH
+========================================================= */
+
+async function refreshDashboard(){
+
+if(
+!currentAccount ||
+currentAccount.role!=="developer"
+){
+
+showToast(
+"Refresh database hanya tersedia Developer.",
+"warning"
+);
+
+return;
+
+}
+
+showToast(
+"Memperbarui dashboard...",
+"warning"
+);
+
+await loadList();
+
+await checkGithubConnection();
+
+await checkTelegramConnection();
+
+await updateStatistics();
+
+await loadDeveloperAccounts();
+
+runLocalBackup();
+
+addActivity(
+"Dashboard diperbarui",
+"↻"
+);
+
+showToast(
+"Dashboard berhasil diperbarui",
+"success"
+);
+
+}
+
+
+/* =========================================================
+   ENTER KEY
+========================================================= */
+
+tokenInput.addEventListener(
+"keydown",
+function(event){
+
+if(
+event.key==="Enter"
+){
+
+openPasswordModal();
+
+}
+
+});
+
+
+passwordInput.addEventListener(
+"keydown",
+function(event){
+
+if(
+event.key==="Enter"
+){
+
+confirmAddToken();
+
+}
+
+if(
+event.key==="Escape"
+){
+
+closePasswordModal();
+
+}
+
+});
+
+
+/* =========================================================
+   CLICK OUTSIDE MODALS
+========================================================= */
+
+passwordModal.addEventListener(
+"click",
+function(event){
+
+if(
+event.target===passwordModal
+){
+
+closePasswordModal();
+
+}
+
+});
+
+
+document.getElementById(
+"createResellerModal"
+).addEventListener(
+"click",
+function(event){
+
+if(
+event.target===this
+){
+
+closeCreateResellerModal();
+
+}
+
+});
+
+
+/* =========================================================
+   SINGLE-FILE AUTH + ROLE ACCESS
+   tokens.json format:
+   {"enabled":true,"tokens":[],"accounts":[
+     {"enabled":true,"role":"developer","scurity":"CHANGE_ME","tokens":[]},
+     {"enabled":true,"role":"ceo","scurity":"CHANGE_ME","tokens":[]},
+     {"enabled":true,"role":"reseller","scurity":"CHANGE_ME","tokens":[]}
+   ]}
+========================================================= */
+let combinedDatabase = null;
+
+async function fetchCombinedDatabase(){
+  const response = await axios.get(RAW_URL + "?t=" + Date.now(), { timeout: 12000 });
+  const data = response.data;
+  if (!data || typeof data !== "object" || !Array.isArray(data.tokens) || !Array.isArray(data.accounts)) {
+    throw new Error("tokens.json harus memiliki enabled, tokens, dan accounts[].");
+  }
+  if (data.enabled !== true) throw new Error("Website sedang dinonaktifkan oleh developer.");
+  data.accounts.forEach(a => { if (!Array.isArray(a.tokens)) a.tokens = []; });
+  combinedDatabase = data;
+  return data;
+}
+
+function setRoleVisibility(role){
+  const roleSections = [tokenSection, statisticsSection, connectionSection, activitySection];
+  roleSections.forEach(el => { if(el) el.classList.toggle("hidden-role", role === "reseller"); });
+  if(checkerSection) checkerSection.classList.toggle("hidden-role", role !== "developer");
+  // Reseller cannot view any registered bot-token list; CEO may view it; developer sees all.
+  if(tokenSection) tokenSection.classList.toggle("hidden-role", role === "reseller");
+  if(developerPanel) developerPanel.classList.toggle("hidden-role", role !== "developer");
+  if(ceoPanel) ceoPanel.classList.add("hidden-role");
+  if(role === "developer") {
+    if(statisticsSection) statisticsSection.classList.remove("hidden-role");
+    if(connectionSection) connectionSection.classList.remove("hidden-role");
+    if(activitySection) activitySection.classList.remove("hidden-role");
+  } else if(role === "ceo") {
+    if(statisticsSection) statisticsSection.classList.add("hidden-role");
+    if(connectionSection) connectionSection.classList.add("hidden-role");
+    if(activitySection) activitySection.classList.add("hidden-role");
+  }
+}
+
+function applyRoleAccess(){
+  if(!currentAccount) return;
+  const role = currentAccount.role;
+  const config = ROLE_CONFIG[role];
+  if(!config) return;
+  document.body.classList.remove("auth-locked");
+  document.getElementById("loginGate").classList.add("hidden");
+  accountName.textContent = currentAccount.username || role.toUpperCase();
+  accountRoleText.textContent = role === "developer" ? "Akses penuh seluruh dashboard." : role === "ceo" ? "CEO · dapat melihat daftar token bot, checker dinonaktifkan." : "Reseller · maksimal 7 token, daftar token dan checker disembunyikan.";
+  roleBadge.textContent = config.name;
+  roleBadge.className = "role-badge " + role;
+  if(summaryUsername) summaryUsername.textContent = currentAccount.username || role.toUpperCase();
+  if(summaryRole) summaryRole.textContent = config.name;
+  setRoleVisibility(role);
+  updateLimitDisplay();
+  if(role === "developer" || role === "ceo") loadList();
+}
+
+async function restoreSession(){
+  document.body.classList.add("auth-locked");
+  document.getElementById("loginGate").classList.remove("hidden");
+  const saved = localStorage.getItem("veronix_current_account");
+  if(!saved) return false;
+  try {
+    const session = JSON.parse(saved);
+    const data = await fetchCombinedDatabase();
+    const account = data.accounts.find(a => a && a.enabled === true && a.role === session.role && a.scurity === session.scurity);
+    if(!account) { localStorage.removeItem("veronix_current_account"); return false; }
+    currentAccount = { role: account.role, username: account.username || account.role.toUpperCase(), scurity: account.scurity };
+    applyRoleAccess();
+    return true;
+  } catch(e) {
+    console.error(e);
+    return false;
+  }
+}
+
+async function loginWithScurity(value){
+  const msg = document.getElementById("authMessage");
+  const button = document.getElementById("authSubmit");
+  msg.textContent = "Memeriksa security key...";
+  msg.style.color = "#ffd45c";
+  button.disabled = true;
+  try {
+    const data = await fetchCombinedDatabase();
+    const account = data.accounts.find(a => a && a.enabled === true && typeof a.scurity === "string" && a.scurity === value && ROLE_CONFIG[a.role]);
+    if(!account) throw new Error("Security key salah atau akun dinonaktifkan.");
+    currentAccount = { role: account.role, username: account.username || account.role.toUpperCase(), scurity: account.scurity };
+    localStorage.setItem("veronix_current_account", JSON.stringify({ role: account.role, scurity: account.scurity }));
+    msg.textContent = "Login berhasil. Role: " + account.role.toUpperCase();
+    msg.style.color = "#2ee9a4";
+    applyRoleAccess();
+    if(account.role === "developer") {
+      await checkGithubConnection(); await checkTelegramConnection(); await updateStatistics();
+    }
+    await updateLimitDisplay();
+  } catch(e) {
+    msg.textContent = e.message || "Gagal login. Periksa database.";
+    msg.style.color = "#ff6375";
+  } finally { button.disabled = false; }
+}
+
+document.getElementById("authForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const value = document.getElementById("authScurity").value.trim();
+  if(!value) return;
+  loginWithScurity(value);
+});
+
+function logoutAccount(){
+  currentAccount = null;
+  localStorage.removeItem("veronix_current_account");
+  document.body.classList.add("auth-locked");
+  document.getElementById("loginGate").classList.remove("hidden");
+  document.getElementById("authScurity").value = "";
+  document.getElementById("authMessage").textContent = "Anda telah keluar.";
+}
+
+loadTheme();
+loadLastActivity();
+renderActivity();
+restoreSession().then(async logged => {
+  if(!logged) return;
+  if(currentAccount && (currentAccount.role === "developer" || currentAccount.role === "ceo")) await loadList();
+  if(currentAccount && currentAccount.role === "developer") { await checkGithubConnection(); await checkTelegramConnection(); await updateStatistics(); }
+  await updateLimitDisplay();
+});
+
+/* =========================================================
+   AUTO REFRESH
+========================================================= */
+setInterval(async function(){
+  if(!currentAccount) return;
+  await updateLimitDisplay();
+  if(currentAccount.role === "developer") {
+    await loadList();
+    await updateStatistics();
+  } else if(currentAccount.role === "ceo") {
+    await loadList();
+  }
+}, 30000);
+
+// Close the legacy wrapper from the supplied dashboard script.
+}
+</script>
+
+</body>
+</html>
