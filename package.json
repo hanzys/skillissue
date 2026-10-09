@@ -1,0 +1,9 @@
+{
+  "name": "veronixkyzooxd-token-manager",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VeronixKyzooxd GitHub Token Manager",
+  "engines": {
+    "node": ">=20"
+  }
+}
